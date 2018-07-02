@@ -261,8 +261,8 @@ module LCD1602(
                 next<=dat9;
             end 
             dat9:   begin  rs<=1; dat<=" "; next<=dat10; end 
-            dat10:   begin  rs<=1; dat<=" "; next<=dat11; end 
-            dat11:   begin  rs<=1; dat<=" "; next<=nul; end 
+            dat10:   begin  rs<=1; dat<=" "; next<=dat0; end 
+            //dat11:   begin  rs<=1; dat<=" "; next<=nul; end 
             //?????12??????????
             nul:   begin 
                 rs<=0;  
@@ -275,7 +275,7 @@ module LCD1602(
                         begin next<=nul; e<=1; 
                         end    
                 end 
-            default:   next=set0; 
+            default:   next=dat0; 
         endcase 
     end 
     assign en=clkr|e; 
