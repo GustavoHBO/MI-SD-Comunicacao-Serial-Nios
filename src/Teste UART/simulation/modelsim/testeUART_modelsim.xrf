@@ -1,0 +1,15 @@
+vendor_name = ModelSim
+source_file = 1, C:/Users/usuario/Desktop/Gustavo Henrique/MI-SD-Comunicacao-Serial-Nios-master/src/modules/uart_tx.v
+source_file = 1, C:/Users/usuario/Desktop/Gustavo Henrique/MI-SD-Comunicacao-Serial-Nios-master/src/modules/uart_rx.v
+source_file = 1, C:/Users/usuario/Desktop/Gustavo Henrique/MI-SD-Comunicacao-Serial-Nios-master/src/modules/UART_Controller.v
+source_file = 1, C:/Users/usuario/Desktop/Gustavo Henrique/MI-SD-Comunicacao-Serial-Nios-master/src/modules/UART.v
+source_file = 1, C:/Users/usuario/Desktop/Gustavo Henrique/MI-SD-Comunicacao-Serial-Nios-master/src/modules/LCD1602.v
+source_file = 1, C:/Users/usuario/Desktop/Gustavo Henrique/MI-SD-Comunicacao-Serial-Nios-master/src/modules/control_uart.v
+source_file = 1, C:/Users/usuario/Desktop/Gustavo Henrique/MI-SD-Comunicacao-Serial-Nios-master/src/modules/clk_divider.v
+source_file = 1, C:/Users/usuario/Desktop/Gustavo Henrique/MI-SD-Comunicacao-Serial-Nios-master/src/Teste UART/db/testeUART.cbx.xml
+design_name = UART
+instance = comp, \tx~output , tx~output, UART, 1
+instance = comp, \rx~input , rx~input, UART, 1
+instance = comp, \button~input , button~input, UART, 1
+instance = comp, \reset~input , reset~input, UART, 1
+instance = comp, \clk~input , clk~input, UART, 1
