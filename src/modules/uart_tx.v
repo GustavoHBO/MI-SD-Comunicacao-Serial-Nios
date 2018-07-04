@@ -1,7 +1,7 @@
-module uart_tx(data, rst, clk, ready, tx);
+module uart_tx(data, reset, clk, ready, tx);
 	
 	input clk;
-	input rst;
+	input reset;
 	input [7:0] data;
 	input ready;
 	
@@ -15,7 +15,7 @@ module uart_tx(data, rst, clk, ready, tx);
 	localparam idle= 2'b00, sending = 2'b01, done = 2'b11; 
 	
 	always @ (posedge clk) begin
-			if (rst) begin
+			if (reset) begin
 				state <= idle;
 				tx <= 1'b1;
 			end else begin
