@@ -37,7 +37,7 @@ module clk_divider (clk_in, rst, pulse, speed, clk_out);
 					end
 				end
 				configure:begin
-					if(speedCache == 2'b00) counter_time <= 12'd2064;
+					if(speedCache == 2'b00) counter_time <= 12'd2604;
 					if(speedCache == 2'b01) counter_time <= 12'd1302;
 					if(speedCache == 2'b11) counter_time <= 12'd434;
 					if(speedCache == 2'b10) counter_time <= 12'd217;

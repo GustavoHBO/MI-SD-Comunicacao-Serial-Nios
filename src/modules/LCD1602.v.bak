@@ -1,9 +1,8 @@
 //www.21eda.com
 //?????LCD1602??????LCD????
 //????????21EDA????????
-module LCD1602(clk, rs, rw, en,dat,LCD_N,LCD_P, dataIn);  
- input clk;  
- input [7:0] dataIn;
+module LCD1602(clk, rs, rw, en,dat,LCD_N,LCD_P);  
+input clk;  
  output [7:0] dat; 
  output  rs,rw,en,LCD_N,LCD_P; 
  //tri en; 
@@ -61,9 +60,9 @@ begin
     dat8:   begin  rs<=1; dat<="e"; next<=dat9; end 
     dat9:   begin  rs<=1; dat<=" "; next<=dat10; end 
     dat10:   begin  rs<=1; dat<=" "; next<=dat11; end 
-    dat11:   begin  rs<=1; dat<=dataIn; next<=nul; end 
+    dat11:   begin  rs<=1; dat<=" "; next<=nul; end 
     
-    nul: begin rs<=0; dat<=8'b00001111; next<=dat11; end    
+    nul: begin rs<=0; dat<=8'b00001111; next<=nul; end    
  
     endcase 
  end 

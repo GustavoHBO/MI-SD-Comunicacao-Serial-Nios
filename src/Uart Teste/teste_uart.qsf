@@ -42,16 +42,10 @@ set_global_assignment -name TOP_LEVEL_ENTITY UART
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "02:42:17  JULY 05, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.1
-set_global_assignment -name VERILOG_FILE ../modules/control_uart.v
-set_global_assignment -name VERILOG_FILE ../modules/clk_divider.v
-set_global_assignment -name VERILOG_FILE ../modules/UART.v
-set_global_assignment -name VERILOG_FILE ../modules/uart_rx.v
-set_global_assignment -name VERILOG_FILE ../modules/uart_tx.v
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
-set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (Verilog)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda_simulation
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
@@ -67,4 +61,38 @@ set_location_assignment PIN_B7 -to led[0]
 set_location_assignment PIN_B16 -to reset
 set_location_assignment PIN_F11 -to rx
 set_location_assignment PIN_K10 -to tx
+set_global_assignment -name VERILOG_FILE ../modules/LCD1602.v
+set_global_assignment -name VERILOG_FILE ../modules/control_uart.v
+set_global_assignment -name VERILOG_FILE ../modules/clk_divider.v
+set_global_assignment -name VERILOG_FILE ../modules/UART.v
+set_global_assignment -name VERILOG_FILE ../modules/uart_rx.v
+set_global_assignment -name VERILOG_FILE ../modules/uart_tx.v
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_location_assignment PIN_L14 -to LCD_N
+set_location_assignment PIN_L12 -to LCD_P
+set_location_assignment PIN_M12 -to dat[7]
+set_location_assignment PIN_L13 -to dat[6]
+set_location_assignment PIN_N14 -to dat[5]
+set_location_assignment PIN_P14 -to dat[4]
+set_location_assignment PIN_N13 -to dat[3]
+set_location_assignment PIN_M11 -to dat[2]
+set_location_assignment PIN_M10 -to dat[1]
+set_location_assignment PIN_L10 -to dat[0]
+set_location_assignment PIN_F15 -to en
+set_location_assignment PIN_G16 -to rs
+set_location_assignment PIN_F16 -to rw
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_NCE_PIN OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

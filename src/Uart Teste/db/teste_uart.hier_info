@@ -1,6 +1,6 @@
 |UART
 button => ~NO_FANOUT~
-clk => clk.IN2
+clk => clk.IN3
 reset => _.IN1
 reset => _.IN1
 reset => _.IN1
@@ -35,14 +35,27 @@ data_packet[20] << control_uart:control_uart.packet
 data_packet[21] << control_uart:control_uart.packet
 data_packet[22] << control_uart:control_uart.packet
 data_packet[23] << control_uart:control_uart.packet
-data_packet[24] << control_uart:control_uart.packet
-data_packet[25] << control_uart:control_uart.packet
-data_packet[26] << control_uart:control_uart.packet
-data_packet[27] << control_uart:control_uart.packet
-data_packet[28] << control_uart:control_uart.packet
-data_packet[29] << control_uart:control_uart.packet
-data_packet[30] << control_uart:control_uart.packet
-data_packet[31] << control_uart:control_uart.packet
+data_packet[24] << dataIn[0].DB_MAX_OUTPUT_PORT_TYPE
+data_packet[25] << dataIn[1].DB_MAX_OUTPUT_PORT_TYPE
+data_packet[26] << dataIn[2].DB_MAX_OUTPUT_PORT_TYPE
+data_packet[27] << dataIn[3].DB_MAX_OUTPUT_PORT_TYPE
+data_packet[28] << dataIn[4].DB_MAX_OUTPUT_PORT_TYPE
+data_packet[29] << dataIn[5].DB_MAX_OUTPUT_PORT_TYPE
+data_packet[30] << dataIn[6].DB_MAX_OUTPUT_PORT_TYPE
+data_packet[31] << dataIn[7].DB_MAX_OUTPUT_PORT_TYPE
+rs << LCD1602:LCD1602.rs
+rw << LCD1602:LCD1602.rw
+en << LCD1602:LCD1602.en
+dat[0] << LCD1602:LCD1602.dat
+dat[1] << LCD1602:LCD1602.dat
+dat[2] << LCD1602:LCD1602.dat
+dat[3] << LCD1602:LCD1602.dat
+dat[4] << LCD1602:LCD1602.dat
+dat[5] << LCD1602:LCD1602.dat
+dat[6] << LCD1602:LCD1602.dat
+dat[7] << LCD1602:LCD1602.dat
+LCD_N << LCD1602:LCD1602.LCD_N
+LCD_P << LCD1602:LCD1602.LCD_P
 
 
 |UART|clk_divider:clk_divider
@@ -651,5 +664,46 @@ ready => Selector2.IN2
 ready => Selector0.IN1
 ready => Selector1.IN2
 tx <= tx~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|UART|LCD1602:LCD1602
+clk => clkr.CLK
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => counter[4].CLK
+clk => counter[5].CLK
+clk => counter[6].CLK
+clk => counter[7].CLK
+clk => counter[8].CLK
+clk => counter[9].CLK
+clk => counter[10].CLK
+clk => counter[11].CLK
+clk => counter[12].CLK
+clk => counter[13].CLK
+clk => counter[14].CLK
+clk => counter[15].CLK
+rs <= rs~reg0.DB_MAX_OUTPUT_PORT_TYPE
+rw <= <GND>
+en <= clkr.DB_MAX_OUTPUT_PORT_TYPE
+dat[0] <= dat[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[1] <= dat[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[2] <= dat[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[3] <= dat[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[4] <= dat[4]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[5] <= dat[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[6] <= dat[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+dat[7] <= dat[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+LCD_N <= <GND>
+LCD_P <= <VCC>
+dataIn[0] => Selector6.IN4
+dataIn[1] => Selector5.IN4
+dataIn[2] => Selector4.IN4
+dataIn[3] => Selector3.IN4
+dataIn[4] => Selector2.IN4
+dataIn[5] => Selector1.IN4
+dataIn[6] => Selector0.IN4
+dataIn[7] => dat.DATAB
 
 
