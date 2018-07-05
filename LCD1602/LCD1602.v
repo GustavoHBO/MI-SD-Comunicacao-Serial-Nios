@@ -41,32 +41,32 @@ initial crc = 32'b10101011110011011110111110101011;     //‭‭‭1010101111001
  assign LCD_N=0;
   assign LCD_P=1;
   
-integer contador = 31;
-integer aux = 63;
+integer contador = 0;
+integer aux = 0;
 integer index;
 
 always @* begin
 for(index = 0; index < 8; index = index+1) begin
-	case(crc[contador-:3])
-		4'b0000: hex[aux-:7] <= 8'd30; //0
-		4'b0001: hex[aux-:7] <= 8'd31; //1
-		4'b0010: hex[aux-:7] <= 8'd32; //2
-		4'b0011: hex[aux-:7] <= 8'd33; //3
-		4'b0100: hex[aux-:7] <= 8'd34; //4
-		4'b0101: hex[aux-:7] <= 8'd35; //5
-		4'b0110: hex[aux-:7] <= 8'd36; //6
-		4'b0111: hex[aux-:7] <= 8'd37; //7
-		4'b1000: hex[aux-:7] <= 8'd38; //8
-		4'b1001: hex[aux-:7] <= 8'd39; //9
-		4'b1010: hex[aux-:7] <= 8'd65; //A
-		4'b1011: hex[aux-:7] <= 8'd66; //B
-		4'b1100: hex[aux-:7] <= 8'd67; //C
-		4'b1101: hex[aux-:7] <= 8'd68; //D
-		4'b1110: hex[aux-:7] <= 8'd69; //E
-		4'b1111: hex[aux-:7] <= 8'd70; //F
+	case(crc[contador+:4])
+		4'b0000: hex[aux+:8] <= 8'd48; //0
+		4'b0001: hex[aux+:8] <= 8'd49; //1
+		4'b0010: hex[aux+:8] <= 8'd50; //2
+		4'b0011: hex[aux+:8] <= 8'd51; //3
+		4'b0100: hex[aux+:8] <= 8'd52; //4
+		4'b0101: hex[aux+:8] <= 8'd53; //5
+		4'b0110: hex[aux+:8] <= 8'd54; //6
+		4'b0111: hex[aux+:8] <= 8'd55; //7
+		4'b1000: hex[aux+:8] <= 8'd56; //8
+		4'b1001: hex[aux+:8] <= 8'd57; //9
+		4'b1010: hex[aux+:8] <= 8'd65; //A
+		4'b1011: hex[aux+:8] <= 8'd66; //B
+		4'b1100: hex[aux+:8] <= 8'd67; //C
+		4'b1101: hex[aux+:8] <= 8'd68; //D
+		4'b1110: hex[aux+:8] <= 8'd69; //E
+		4'b1111: hex[aux+:8] <= 8'd70; //F
 	endcase
-	contador = contador - 4;
-	aux = aux - 8;
+	contador = contador + 4;
+	aux = aux + 8;
 end
 end
 
