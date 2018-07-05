@@ -41,12 +41,6 @@ module UART(button, clk, reset, rx, tx);
 		.ready(ready)
 		);
 	
-	uart_tx uart_tx(
-		.data(data),
-		.reset(~reset), 
-		.clk(clk_speed), 
-		.ready(ready), 
-		.tx(tx)
-	);
+	
 	
 endmodule

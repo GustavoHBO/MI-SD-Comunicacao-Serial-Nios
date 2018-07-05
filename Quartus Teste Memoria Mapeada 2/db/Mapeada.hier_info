@@ -1,18 +1,22 @@
 |Mapeada
 clk => clk.IN2
-rs <= LCD1602:LCD1602_inst.rs
-rw <= LCD1602:LCD1602_inst.rw
-en <= LCD1602:LCD1602_inst.en
-dat[0] <= LCD1602:LCD1602_inst.dat
-dat[1] <= LCD1602:LCD1602_inst.dat
-dat[2] <= LCD1602:LCD1602_inst.dat
-dat[3] <= LCD1602:LCD1602_inst.dat
-dat[4] <= LCD1602:LCD1602_inst.dat
-dat[5] <= LCD1602:LCD1602_inst.dat
-dat[6] <= LCD1602:LCD1602_inst.dat
-dat[7] <= LCD1602:LCD1602_inst.dat
-LCD_N <= LCD1602:LCD1602_inst.LCD_N
-LCD_P <= LCD1602:LCD1602_inst.LCD_P
+led[0] << lcd_processador[4].DB_MAX_OUTPUT_PORT_TYPE
+led[1] << lcd_processador[5].DB_MAX_OUTPUT_PORT_TYPE
+led[2] << lcd_processador[6].DB_MAX_OUTPUT_PORT_TYPE
+led[3] << lcd_processador[7].DB_MAX_OUTPUT_PORT_TYPE
+rs << LCD1602:LCD1602_inst.rs
+rw << LCD1602:LCD1602_inst.rw
+en << LCD1602:LCD1602_inst.en
+dat[0] << LCD1602:LCD1602_inst.dat
+dat[1] << LCD1602:LCD1602_inst.dat
+dat[2] << LCD1602:LCD1602_inst.dat
+dat[3] << LCD1602:LCD1602_inst.dat
+dat[4] << LCD1602:LCD1602_inst.dat
+dat[5] << LCD1602:LCD1602_inst.dat
+dat[6] << LCD1602:LCD1602_inst.dat
+dat[7] << LCD1602:LCD1602_inst.dat
+LCD_N << LCD1602:LCD1602_inst.LCD_N
+LCD_P << LCD1602:LCD1602_inst.LCD_P
 
 
 |Mapeada|processor:processor
