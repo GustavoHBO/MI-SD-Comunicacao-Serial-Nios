@@ -13,11 +13,13 @@ state.done 0 1 0 1
 state.receving 1 0 0 1 
 
 State Machine - |UART|control_uart:control_uart|state
-Name state.configure state.done state.idle state.reset 
-state.reset 0 0 0 0 
-state.idle 0 0 1 1 
-state.done 0 1 0 1 
-state.configure 1 0 0 1 
+Name state.data_packet_ok state.mount_packet state.configure state.done state.idle state.reset 
+state.reset 0 0 0 0 0 0 
+state.idle 0 0 0 0 1 1 
+state.done 0 0 0 1 0 1 
+state.configure 0 0 1 0 0 1 
+state.mount_packet 0 1 0 0 0 1 
+state.data_packet_ok 1 0 0 0 0 1 
 
 State Machine - |UART|clk_divider:clk_divider|state
 Name state.configure state.done state.idle state.reset 

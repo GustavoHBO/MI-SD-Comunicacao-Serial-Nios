@@ -1,5 +1,5 @@
 Analysis & Synthesis report for teste_uart
-Thu Jul  5 11:13:55 2018
+Thu Jul  5 13:45:28 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -51,16 +51,16 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jul  5 11:13:55 2018      ;
+; Analysis & Synthesis Status        ; Successful - Thu Jul  5 13:45:28 2018      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; teste_uart                                 ;
 ; Top-level Entity Name              ; UART                                       ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 88                                         ;
-;     Total combinational functions  ; 79                                         ;
-;     Dedicated logic registers      ; 56                                         ;
-; Total registers                    ; 56                                         ;
-; Total pins                         ; 9                                          ;
+; Total logic elements               ; 85                                         ;
+;     Total combinational functions  ; 76                                         ;
+;     Dedicated logic registers      ; 54                                         ;
+; Total registers                    ; 54                                         ;
+; Total pins                         ; 41                                         ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0                                          ;
 ; Embedded Multiplier 9-bit elements ; 0                                          ;
@@ -184,28 +184,28 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+---------------------------------+
 ; Resource                                    ; Usage                           ;
 +---------------------------------------------+---------------------------------+
-; Estimated Total logic elements              ; 88                              ;
+; Estimated Total logic elements              ; 85                              ;
 ;                                             ;                                 ;
-; Total combinational functions               ; 79                              ;
+; Total combinational functions               ; 76                              ;
 ; Logic element usage by number of LUT inputs ;                                 ;
-;     -- 4 input functions                    ; 35                              ;
-;     -- 3 input functions                    ; 18                              ;
-;     -- <=2 input functions                  ; 26                              ;
+;     -- 4 input functions                    ; 38                              ;
+;     -- 3 input functions                    ; 11                              ;
+;     -- <=2 input functions                  ; 27                              ;
 ;                                             ;                                 ;
 ; Logic elements by mode                      ;                                 ;
-;     -- normal mode                          ; 68                              ;
+;     -- normal mode                          ; 65                              ;
 ;     -- arithmetic mode                      ; 11                              ;
 ;                                             ;                                 ;
-; Total registers                             ; 56                              ;
-;     -- Dedicated logic registers            ; 56                              ;
+; Total registers                             ; 54                              ;
+;     -- Dedicated logic registers            ; 54                              ;
 ;     -- I/O registers                        ; 0                               ;
 ;                                             ;                                 ;
-; I/O pins                                    ; 9                               ;
+; I/O pins                                    ; 41                              ;
 ; Embedded Multiplier 9-bit elements          ; 0                               ;
 ; Maximum fan-out node                        ; clk_divider:clk_divider|clk_out ;
 ; Maximum fan-out                             ; 41                              ;
-; Total fan-out                               ; 438                             ;
-; Average fan-out                             ; 2.86                            ;
+; Total fan-out                               ; 457                             ;
+; Average fan-out                             ; 2.16                            ;
 +---------------------------------------------+---------------------------------+
 
 
@@ -214,9 +214,9 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
 ; Compilation Hierarchy Node   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name           ; Library Name ;
 +------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
-; |UART                        ; 79 (1)            ; 56 (0)       ; 0           ; 0            ; 0       ; 0         ; 9    ; 0            ; |UART                         ; work         ;
-;    |clk_divider:clk_divider| ; 22 (22)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UART|clk_divider:clk_divider ; work         ;
-;    |uart_rx:uart_rx|         ; 36 (36)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UART|uart_rx:uart_rx         ; work         ;
+; |UART                        ; 76 (1)            ; 54 (0)       ; 0           ; 0            ; 0       ; 0         ; 41   ; 0            ; |UART                         ; work         ;
+;    |clk_divider:clk_divider| ; 17 (17)           ; 14 (14)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UART|clk_divider:clk_divider ; work         ;
+;    |uart_rx:uart_rx|         ; 38 (38)           ; 24 (24)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UART|uart_rx:uart_rx         ; work         ;
 ;    |uart_tx:uart_tx|         ; 20 (20)           ; 16 (16)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UART|uart_tx:uart_tx         ; work         ;
 +------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -248,16 +248,18 @@ Encoding Type:  One-Hot
 
 
 Encoding Type:  One-Hot
-+---------------------------------------------------------------------------+
-; State Machine - |UART|control_uart:control_uart|state                     ;
-+-----------------+-----------------+------------+------------+-------------+
-; Name            ; state.configure ; state.done ; state.idle ; state.reset ;
-+-----------------+-----------------+------------+------------+-------------+
-; state.reset     ; 0               ; 0          ; 0          ; 0           ;
-; state.idle      ; 0               ; 0          ; 1          ; 1           ;
-; state.done      ; 0               ; 1          ; 0          ; 1           ;
-; state.configure ; 1               ; 0          ; 0          ; 1           ;
-+-----------------+-----------------+------------+------------+-------------+
++----------------------------------------------------------------------------------------------------------------------------+
+; State Machine - |UART|control_uart:control_uart|state                                                                      ;
++----------------------+----------------------+--------------------+-----------------+------------+------------+-------------+
+; Name                 ; state.data_packet_ok ; state.mount_packet ; state.configure ; state.done ; state.idle ; state.reset ;
++----------------------+----------------------+--------------------+-----------------+------------+------------+-------------+
+; state.reset          ; 0                    ; 0                  ; 0               ; 0          ; 0          ; 0           ;
+; state.idle           ; 0                    ; 0                  ; 0               ; 0          ; 1          ; 1           ;
+; state.done           ; 0                    ; 0                  ; 0               ; 1          ; 0          ; 1           ;
+; state.configure      ; 0                    ; 0                  ; 1               ; 0          ; 0          ; 1           ;
+; state.mount_packet   ; 0                    ; 1                  ; 0               ; 0          ; 0          ; 1           ;
+; state.data_packet_ok ; 1                    ; 0                  ; 0               ; 0          ; 0          ; 1           ;
++----------------------+----------------------+--------------------+-----------------+------------+------------+-------------+
 
 
 Encoding Type:  One-Hot
@@ -273,40 +275,57 @@ Encoding Type:  One-Hot
 +-----------------+-----------------+------------+------------+-------------+
 
 
-+-------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                    ;
-+-------------------------------------------------+-----------------------------------------------------+
-; Register name                                   ; Reason for Removal                                  ;
-+-------------------------------------------------+-----------------------------------------------------+
-; clk_divider:clk_divider|speedCache[0,1]         ; Stuck at GND due to stuck port data_in              ;
-; uart_tx:uart_tx|data_size[1..3]                 ; Merged with uart_tx:uart_tx|data_size[0]            ;
-; uart_rx:uart_rx|data_size[1,2]                  ; Merged with uart_rx:uart_rx|data_size[0]            ;
-; control_uart:control_uart|dataCache[5]          ; Merged with control_uart:control_uart|dataCache[4]  ;
-; clk_divider:clk_divider|counter_time[1,6..8,10] ; Merged with clk_divider:clk_divider|counter_time[0] ;
-; clk_divider:clk_divider|counter_time[3,5,9]     ; Merged with clk_divider:clk_divider|counter_time[2] ;
-; uart_tx:uart_tx|data_size[0]                    ; Stuck at GND due to stuck port data_in              ;
-; control_uart:control_uart|dataCache[4]          ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|counter_time[0]         ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|counter_time[11]        ; Stuck at VCC due to stuck port data_in              ;
-; uart_rx:uart_rx|data_size[3]                    ; Stuck at GND due to stuck port data_in              ;
-; control_uart:control_uart|state.idle            ; Lost fanout                                         ;
-; uart_rx:uart_rx|state~2                         ; Lost fanout                                         ;
-; uart_rx:uart_rx|state~3                         ; Lost fanout                                         ;
-; control_uart:control_uart|state~6               ; Lost fanout                                         ;
-; control_uart:control_uart|state~7               ; Lost fanout                                         ;
-; clk_divider:clk_divider|state~6                 ; Lost fanout                                         ;
-; clk_divider:clk_divider|state~7                 ; Lost fanout                                         ;
-; control_uart:control_uart|state.configure       ; Stuck at GND due to stuck port data_in              ;
-; control_uart:control_uart|state.done            ; Stuck at GND due to stuck port data_in              ;
-; control_uart:control_uart|state.reset           ; Merged with clk_divider:clk_divider|state.reset     ;
-; control_uart:control_uart|pulse                 ; Stuck at GND due to stuck port data_in              ;
-; uart_rx:uart_rx|state.reset                     ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|state.configure         ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|state.done              ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|counter_time[4]         ; Stuck at GND due to stuck port data_in              ;
-; uart_rx:uart_rx|data_size[0]                    ; Stuck at GND due to stuck port data_in              ;
-; Total Number of Removed Registers = 37          ;                                                     ;
-+-------------------------------------------------+-----------------------------------------------------+
++------------------------------------------------------------------------------------------------------------+
+; Registers Removed During Synthesis                                                                         ;
++---------------------------------------------------+--------------------------------------------------------+
+; Register name                                     ; Reason for Removal                                     ;
++---------------------------------------------------+--------------------------------------------------------+
+; clk_divider:clk_divider|speedCache[0,1]           ; Stuck at GND due to stuck port data_in                 ;
+; uart_tx:uart_tx|data_size[1..3]                   ; Merged with uart_tx:uart_tx|data_size[0]               ;
+; uart_rx:uart_rx|data_size[1,2]                    ; Merged with uart_rx:uart_rx|data_size[0]               ;
+; control_uart:control_uart|configuration[1,4..7]   ; Merged with control_uart:control_uart|configuration[0] ;
+; control_uart:control_uart|configuration[3]        ; Merged with control_uart:control_uart|configuration[2] ;
+; control_uart:control_uart|dataCache[1..7]         ; Merged with control_uart:control_uart|dataCache[0]     ;
+; control_uart:control_uart|data_packet[24..31]     ; Merged with control_uart:control_uart|dataCache[0]     ;
+; control_uart:control_uart|data_packet[1..7]       ; Merged with control_uart:control_uart|data_packet[0]   ;
+; control_uart:control_uart|data_packet[8,9,11..15] ; Merged with control_uart:control_uart|data_packet[10]  ;
+; control_uart:control_uart|data_packet[17..23]     ; Merged with control_uart:control_uart|data_packet[16]  ;
+; clk_divider:clk_divider|counter_time[1,6..8,10]   ; Merged with clk_divider:clk_divider|counter_time[0]    ;
+; clk_divider:clk_divider|counter_time[3,5,9]       ; Merged with clk_divider:clk_divider|counter_time[2]    ;
+; uart_tx:uart_tx|data_size[0]                      ; Stuck at GND due to stuck port data_in                 ;
+; control_uart:control_uart|dataCache[0]            ; Stuck at GND due to stuck port data_in                 ;
+; control_uart:control_uart|packet[24..31]          ; Stuck at GND due to stuck port data_in                 ;
+; control_uart:control_uart|configuration[0]        ; Stuck at GND due to stuck port data_in                 ;
+; clk_divider:clk_divider|counter_time[0]           ; Stuck at GND due to stuck port data_in                 ;
+; clk_divider:clk_divider|counter_time[11]          ; Stuck at VCC due to stuck port data_in                 ;
+; control_uart:control_uart|data_packet[0,10,16]    ; Stuck at GND due to stuck port data_in                 ;
+; control_uart:control_uart|packet[0..23]           ; Stuck at GND due to stuck port data_in                 ;
+; control_uart:control_uart|configuration[2]        ; Lost fanout                                            ;
+; control_uart:control_uart|count_packet[0..2]      ; Lost fanout                                            ;
+; uart_rx:uart_rx|data_size[3]                      ; Stuck at GND due to stuck port data_in                 ;
+; control_uart:control_uart|pulse                   ; Stuck at GND due to stuck port data_in                 ;
+; uart_rx:uart_rx|data_size[0]                      ; Stuck at VCC due to stuck port data_in                 ;
+; control_uart:control_uart|state.done              ; Lost fanout                                            ;
+; control_uart:control_uart|state.configure         ; Lost fanout                                            ;
+; control_uart:control_uart|state.data_packet_ok    ; Lost fanout                                            ;
+; uart_rx:uart_rx|state~2                           ; Lost fanout                                            ;
+; uart_rx:uart_rx|state~3                           ; Lost fanout                                            ;
+; control_uart:control_uart|state~8                 ; Lost fanout                                            ;
+; control_uart:control_uart|state~9                 ; Lost fanout                                            ;
+; control_uart:control_uart|state~10                ; Lost fanout                                            ;
+; clk_divider:clk_divider|state~6                   ; Lost fanout                                            ;
+; clk_divider:clk_divider|state~7                   ; Lost fanout                                            ;
+; clk_divider:clk_divider|state.configure           ; Stuck at GND due to stuck port data_in                 ;
+; clk_divider:clk_divider|state.done                ; Stuck at GND due to stuck port data_in                 ;
+; control_uart:control_uart|state.reset             ; Lost fanout                                            ;
+; control_uart:control_uart|state.idle              ; Lost fanout                                            ;
+; control_uart:control_uart|state.mount_packet      ; Lost fanout                                            ;
+; clk_divider:clk_divider|state.reset               ; Merged with clk_divider:clk_divider|state.idle         ;
+; clk_divider:clk_divider|counter_time[4]           ; Stuck at GND due to stuck port data_in                 ;
+; uart_rx:uart_rx|state.reset                       ; Stuck at GND due to stuck port data_in                 ;
+; clk_divider:clk_divider|counter_time[2]           ; Stuck at VCC due to stuck port data_in                 ;
+; Total Number of Removed Registers = 123           ;                                                        ;
++---------------------------------------------------+--------------------------------------------------------+
 
 
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -314,10 +333,36 @@ Encoding Type:  One-Hot
 +----------------------------------------+---------------------------+------------------------------------------------------------------------------------+
 ; Register name                          ; Reason for Removal        ; Registers Removed due to This Register                                             ;
 +----------------------------------------+---------------------------+------------------------------------------------------------------------------------+
+; control_uart:control_uart|dataCache[0] ; Stuck at GND              ; control_uart:control_uart|packet[24], control_uart:control_uart|packet[25],        ;
+;                                        ; due to stuck port data_in ; control_uart:control_uart|packet[26], control_uart:control_uart|packet[27],        ;
+;                                        ;                           ; control_uart:control_uart|packet[28], control_uart:control_uart|packet[29],        ;
+;                                        ;                           ; control_uart:control_uart|packet[30], control_uart:control_uart|packet[31],        ;
+;                                        ;                           ; control_uart:control_uart|configuration[0],                                        ;
+;                                        ;                           ; control_uart:control_uart|data_packet[0],                                          ;
+;                                        ;                           ; control_uart:control_uart|data_packet[10],                                         ;
+;                                        ;                           ; control_uart:control_uart|data_packet[16], control_uart:control_uart|packet[7],    ;
+;                                        ;                           ; control_uart:control_uart|packet[6], control_uart:control_uart|packet[5],          ;
+;                                        ;                           ; control_uart:control_uart|packet[4], control_uart:control_uart|packet[3],          ;
+;                                        ;                           ; control_uart:control_uart|packet[2], control_uart:control_uart|packet[1],          ;
+;                                        ;                           ; control_uart:control_uart|packet[0], control_uart:control_uart|packet[8],          ;
+;                                        ;                           ; control_uart:control_uart|packet[9], control_uart:control_uart|packet[10],         ;
+;                                        ;                           ; control_uart:control_uart|packet[11], control_uart:control_uart|packet[12],        ;
+;                                        ;                           ; control_uart:control_uart|packet[13], control_uart:control_uart|packet[14],        ;
+;                                        ;                           ; control_uart:control_uart|packet[15], control_uart:control_uart|packet[16],        ;
+;                                        ;                           ; control_uart:control_uart|packet[17], control_uart:control_uart|packet[18],        ;
+;                                        ;                           ; control_uart:control_uart|packet[19], control_uart:control_uart|packet[20],        ;
+;                                        ;                           ; control_uart:control_uart|packet[21], control_uart:control_uart|packet[22],        ;
+;                                        ;                           ; control_uart:control_uart|packet[23], control_uart:control_uart|configuration[2],  ;
+;                                        ;                           ; control_uart:control_uart|count_packet[0],                                         ;
+;                                        ;                           ; control_uart:control_uart|count_packet[1],                                         ;
+;                                        ;                           ; control_uart:control_uart|count_packet[2]                                          ;
 ; clk_divider:clk_divider|speedCache[0]  ; Stuck at GND              ; clk_divider:clk_divider|counter_time[0], clk_divider:clk_divider|counter_time[11], ;
-;                                        ; due to stuck port data_in ; clk_divider:clk_divider|counter_time[4]                                            ;
-; control_uart:control_uart|dataCache[4] ; Stuck at GND              ; control_uart:control_uart|pulse, uart_rx:uart_rx|data_size[0]                      ;
+;                                        ; due to stuck port data_in ; clk_divider:clk_divider|counter_time[4], clk_divider:clk_divider|counter_time[2]   ;
+; control_uart:control_uart|pulse        ; Stuck at GND              ; uart_rx:uart_rx|data_size[0]                                                       ;
 ;                                        ; due to stuck port data_in ;                                                                                    ;
+; control_uart:control_uart|state~8      ; Lost Fanouts              ; control_uart:control_uart|state.idle                                               ;
+; control_uart:control_uart|state~9      ; Lost Fanouts              ; control_uart:control_uart|state.reset                                              ;
+; control_uart:control_uart|state~10     ; Lost Fanouts              ; control_uart:control_uart|state.mount_packet                                       ;
 +----------------------------------------+---------------------------+------------------------------------------------------------------------------------+
 
 
@@ -326,12 +371,12 @@ Encoding Type:  One-Hot
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 56    ;
-; Number of registers using Synchronous Clear  ; 16    ;
+; Total registers                              ; 54    ;
+; Number of registers using Synchronous Clear  ; 15    ;
 ; Number of registers using Synchronous Load   ; 13    ;
 ; Number of registers using Asynchronous Clear ; 0     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 29    ;
+; Number of registers using Clock Enable       ; 28    ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -342,9 +387,8 @@ Encoding Type:  One-Hot
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
 ; 3:1                ; 8 bits    ; 16 LEs        ; 8 LEs                ; 8 LEs                  ; Yes        ; |UART|uart_rx:uart_rx|data[0]         ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |UART|uart_tx:uart_tx|counter[2]      ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |UART|uart_rx:uart_rx|counter[3]      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |UART|control_uart:control_uart|state ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |UART|uart_tx:uart_tx|counter[1]      ;
+; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |UART|uart_rx:uart_rx|counter[1]      ;
 ; 3:1                ; 12 bits   ; 24 LEs        ; 24 LEs               ; 0 LEs                  ; No         ; |UART|clk_divider:clk_divider|counter ;
 ; 4:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |UART|clk_divider:clk_divider|state   ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
@@ -359,17 +403,21 @@ Encoding Type:  One-Hot
 +-------+-------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
-+-------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "control_uart:control_uart"                                                                   ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port          ; Type   ; Severity ; Details                                                                             ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
-; dataReady     ; Input  ; Info     ; Explicitly unconnected                                                              ;
-; dataIn[3..2]  ; Input  ; Info     ; Stuck at VCC                                                                        ;
-; dataIn[7..4]  ; Input  ; Info     ; Stuck at GND                                                                        ;
-; dataIn[1..0]  ; Input  ; Info     ; Stuck at GND                                                                        ;
-; dataOut[5..0] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+---------------+--------+----------+-------------------------------------------------------------------------------------+
++-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "control_uart:control_uart"                                                                                                                             ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; Port           ; Type   ; Severity ; Details                                                                                                                                      ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
+; dataReady      ; Input  ; Info     ; Explicitly unconnected                                                                                                                       ;
+; dataIn[3..2]   ; Input  ; Info     ; Stuck at VCC                                                                                                                                 ;
+; dataIn[7..4]   ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
+; dataIn[1..0]   ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
+; dataOut[5..0]  ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed.                                                          ;
+; dataReady      ; Input  ; Info     ; Stuck at GND                                                                                                                                 ;
+; packet_receive ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; pulse_receive  ; Input  ; Warning  ; Declared by entity but not connected by instance. If a default value exists, it will be used.  Otherwise, the port will be connected to GND. ;
+; pulse_packet   ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed.                                     ;
++----------------+--------+----------+----------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-------------------------------+
@@ -387,7 +435,7 @@ Encoding Type:  One-Hot
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Jul  5 11:13:52 2018
+    Info: Processing started: Thu Jul  5 13:45:25 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off teste_uart -c teste_uart
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/control_uart.v
@@ -403,25 +451,57 @@ Info (12021): Found 1 design units, including 1 entities, in source file /home/g
 Info (12127): Elaborating entity "UART" for the top level hierarchy
 Info (12128): Elaborating entity "clk_divider" for hierarchy "clk_divider:clk_divider"
 Info (12128): Elaborating entity "control_uart" for hierarchy "control_uart:control_uart"
-Warning (10036): Verilog HDL or VHDL warning at control_uart.v(17): object "configuration" assigned a value but never read
-Warning (10034): Output port "dataOut" at control_uart.v(14) has no driver
+Warning (10034): Output port "dataOut" at control_uart.v(21) has no driver
 Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:uart_rx"
 Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:uart_tx"
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (12241): 2 hierarchies have connectivity warnings - see the Connectivity Checks report folder
+Warning (13024): Output pins are stuck at VCC or GND
+    Warning (13410): Pin "data_packet[0]" is stuck at GND
+    Warning (13410): Pin "data_packet[1]" is stuck at GND
+    Warning (13410): Pin "data_packet[2]" is stuck at GND
+    Warning (13410): Pin "data_packet[3]" is stuck at GND
+    Warning (13410): Pin "data_packet[4]" is stuck at GND
+    Warning (13410): Pin "data_packet[5]" is stuck at GND
+    Warning (13410): Pin "data_packet[6]" is stuck at GND
+    Warning (13410): Pin "data_packet[7]" is stuck at GND
+    Warning (13410): Pin "data_packet[8]" is stuck at GND
+    Warning (13410): Pin "data_packet[9]" is stuck at GND
+    Warning (13410): Pin "data_packet[10]" is stuck at GND
+    Warning (13410): Pin "data_packet[11]" is stuck at GND
+    Warning (13410): Pin "data_packet[12]" is stuck at GND
+    Warning (13410): Pin "data_packet[13]" is stuck at GND
+    Warning (13410): Pin "data_packet[14]" is stuck at GND
+    Warning (13410): Pin "data_packet[15]" is stuck at GND
+    Warning (13410): Pin "data_packet[16]" is stuck at GND
+    Warning (13410): Pin "data_packet[17]" is stuck at GND
+    Warning (13410): Pin "data_packet[18]" is stuck at GND
+    Warning (13410): Pin "data_packet[19]" is stuck at GND
+    Warning (13410): Pin "data_packet[20]" is stuck at GND
+    Warning (13410): Pin "data_packet[21]" is stuck at GND
+    Warning (13410): Pin "data_packet[22]" is stuck at GND
+    Warning (13410): Pin "data_packet[23]" is stuck at GND
+    Warning (13410): Pin "data_packet[24]" is stuck at GND
+    Warning (13410): Pin "data_packet[25]" is stuck at GND
+    Warning (13410): Pin "data_packet[26]" is stuck at GND
+    Warning (13410): Pin "data_packet[27]" is stuck at GND
+    Warning (13410): Pin "data_packet[28]" is stuck at GND
+    Warning (13410): Pin "data_packet[29]" is stuck at GND
+    Warning (13410): Pin "data_packet[30]" is stuck at GND
+    Warning (13410): Pin "data_packet[31]" is stuck at GND
 Info (286030): Timing-Driven Synthesis is running
-Info (17049): 7 registers lost all their fanouts during netlist optimizations.
+Info (17049): 17 registers lost all their fanouts during netlist optimizations.
 Info (144001): Generated suppressed messages file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/Uart Teste/output_files/teste_uart.map.smsg
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
 Warning (21074): Design contains 1 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "button"
-Info (21057): Implemented 98 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 126 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 89 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 6 warnings
+    Info (21059): Implemented 37 output pins
+    Info (21061): Implemented 85 logic cells
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 38 warnings
     Info: Peak virtual memory: 655 megabytes
-    Info: Processing ended: Thu Jul  5 11:13:55 2018
+    Info: Processing ended: Thu Jul  5 13:45:28 2018
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:03
 
