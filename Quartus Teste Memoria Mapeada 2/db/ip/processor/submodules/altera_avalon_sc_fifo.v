@@ -138,11 +138,13 @@ module altera_avalon_sc_fifo
     reg  [ADDR_WIDTH : 0] fill_level;
 
     reg  [ADDR_WIDTH-1 : 0]   sop_ptr = 0;
-    wire [ADDR_WIDTH-1 : 0]   curr_sop_ptr;
     reg  [23:0]   almost_full_threshold;
     reg  [23:0]   almost_empty_threshold;
     reg  [23:0]   cut_through_threshold;
     reg  [15:0]   pkt_cnt;
+    reg  [15:0]   pkt_cnt_r;
+    reg  [15:0]   pkt_cnt_plusone;
+    reg  [15:0]   pkt_cnt_minusone;
     reg           drop_on_error_en;
     reg           error_in_pkt;
     reg           pkt_has_started;
@@ -150,6 +152,7 @@ module altera_avalon_sc_fifo
     reg           fifo_too_small_r;
     reg           pkt_cnt_eq_zero;
     reg           pkt_cnt_eq_one;
+    reg           pkt_cnt_changed;
 
     wire          wait_for_threshold;
     reg           pkt_mode;
@@ -172,11 +175,11 @@ module altera_avalon_sc_fifo
     // payload to the FIFO with generate blocks.
     // --------------------------------------------------
     generate
-        if (EMPTY_WIDTH > 0) begin : gen_blk1
+        if (EMPTY_WIDTH > 0) begin
             assign in_packet_signals = {in_startofpacket, in_endofpacket, in_empty};
             assign {out_startofpacket, out_endofpacket, out_empty} = out_packet_signals;
         end 
-        else begin : gen_blk1_else
+        else begin
             assign out_empty = in_error;
             assign in_packet_signals = {in_startofpacket, in_endofpacket};
             assign {out_startofpacket, out_endofpacket} = out_packet_signals;
@@ -184,51 +187,51 @@ module altera_avalon_sc_fifo
     endgenerate
 
     generate
-        if (USE_PACKETS) begin : gen_blk2
-            if (ERROR_WIDTH > 0) begin : gen_blk3
-                if (CHANNEL_WIDTH > 0) begin : gen_blk4
+        if (USE_PACKETS) begin
+            if (ERROR_WIDTH > 0) begin
+                if (CHANNEL_WIDTH > 0) begin
                     assign in_payload = {in_packet_signals, in_data, in_error, in_channel};
                     assign {out_packet_signals, out_data, out_error, out_channel} = out_payload;
                 end
-                else begin : gen_blk4_else
+                else begin
                     assign out_channel = in_channel;
                     assign in_payload = {in_packet_signals, in_data, in_error};
                     assign {out_packet_signals, out_data, out_error} = out_payload;
                 end
             end
-            else begin : gen_blk3_else
+            else begin
                 assign out_error = in_error;
-                if (CHANNEL_WIDTH > 0) begin : gen_blk5
+                if (CHANNEL_WIDTH > 0) begin
                     assign in_payload = {in_packet_signals, in_data, in_channel};
                     assign {out_packet_signals, out_data, out_channel} = out_payload;
                 end
-                else begin : gen_blk5_else
+                else begin
                     assign out_channel = in_channel;
                     assign in_payload = {in_packet_signals, in_data};
                     assign {out_packet_signals, out_data} = out_payload;
                 end
             end
         end
-        else begin : gen_blk2_else
+        else begin 
             assign out_packet_signals = 0;
-            if (ERROR_WIDTH > 0) begin : gen_blk6
-                if (CHANNEL_WIDTH > 0) begin : gen_blk7
+            if (ERROR_WIDTH > 0) begin
+                if (CHANNEL_WIDTH > 0) begin
                     assign in_payload = {in_data, in_error, in_channel};
                     assign {out_data, out_error, out_channel} = out_payload;
                 end
-                else begin : gen_blk7_else
+                else begin
                     assign out_channel = in_channel;
                     assign in_payload = {in_data, in_error};
                     assign {out_data, out_error} = out_payload;
                 end
             end
-            else begin : gen_blk6_else
+            else begin
                 assign out_error = in_error;
-                if (CHANNEL_WIDTH > 0) begin : gen_blk8
+                if (CHANNEL_WIDTH > 0) begin
                     assign in_payload = {in_data, in_channel};
                     assign {out_data, out_channel} = out_payload;
                 end
-                else begin : gen_blk8_else
+                else begin
                     assign out_channel = in_channel;
                     assign in_payload = in_data;
                     assign out_data = out_payload;
@@ -253,9 +256,9 @@ module altera_avalon_sc_fifo
     // refactor the two always blocks into one will break
     // memory inference.
     // --------------------------------------------------
-    generate if (USE_MEMORY_BLOCKS == 1) begin  : gen_blk9
+    generate if (USE_MEMORY_BLOCKS == 1) begin
 
-        if (EMPTY_LATENCY == 1) begin : gen_blk10
+        if (EMPTY_LATENCY == 1) begin
 
             always @(posedge clk) begin
                 if (in_valid && in_ready)
@@ -264,7 +267,7 @@ module altera_avalon_sc_fifo
                 internal_out_payload = mem[mem_rd_ptr];
             end
 
-        end else begin : gen_blk10_else
+        end else begin
 
             always @(posedge clk) begin
                 if (in_valid && in_ready)
@@ -277,7 +280,7 @@ module altera_avalon_sc_fifo
 
         assign mem_rd_ptr = next_rd_ptr;
     
-    end else begin : gen_blk9_else
+    end else begin 
 
     // --------------------------------------------------
     // Register-based FIFO storage
@@ -317,12 +320,13 @@ module altera_avalon_sc_fifo
                 mem[DEPTH-1] <= 0;
             end 
             else begin
+                if (!mem_used[DEPTH-1])
+                    mem[DEPTH-1] <= in_payload;
+
                 if (DEPTH == 1) begin
                     if (write)
                         mem[DEPTH-1] <= in_payload;
                 end
-                else if (!mem_used[DEPTH-1])
-                    mem[DEPTH-1] <= in_payload;    
             end
         end
 
@@ -335,11 +339,11 @@ module altera_avalon_sc_fifo
     // --------------------------------------------------
     // Pointer Management
     // --------------------------------------------------
-    generate if (USE_MEMORY_BLOCKS == 1) begin : gen_blk11
+    generate if (USE_MEMORY_BLOCKS == 1) begin
 
         assign incremented_wr_ptr = wr_ptr + 1'b1;
         assign incremented_rd_ptr = rd_ptr + 1'b1;
-        assign next_wr_ptr =  drop_on_error ? curr_sop_ptr : write ?  incremented_wr_ptr : wr_ptr;
+        assign next_wr_ptr =  drop_on_error ? sop_ptr : write ?  incremented_wr_ptr : wr_ptr;
         assign next_rd_ptr = (read) ? incremented_rd_ptr : rd_ptr;
 
         always @(posedge clk or posedge reset) begin
@@ -353,7 +357,7 @@ module altera_avalon_sc_fifo
             end
         end
 
-    end else begin : gen_blk11_else
+    end else begin
 
     // --------------------------------------------------
     // Shift Register Occupancy Bits
@@ -372,19 +376,19 @@ module altera_avalon_sc_fifo
             end 
             else begin
                 if (write ^ read) begin
-                    if (write)
-                        mem_used[0] <= 1;
-                    else if (read) begin
-                        if (DEPTH > 1)
+                    if (read) begin
+                        if (DEPTH > 1) 
                             mem_used[0] <= mem_used[1];
                         else
                             mem_used[0] <= 0;
-                    end    
+                    end
+                    if (write)
+                        mem_used[0] <= 1;
                 end
             end
         end
 
-        if (DEPTH > 1) begin : gen_blk12
+        if (DEPTH > 1) begin
             always @(posedge clk or posedge reset) begin
                 if (reset) begin
                     mem_used[DEPTH-1] <= 0;
@@ -406,10 +410,10 @@ module altera_avalon_sc_fifo
                 end 
                 else begin
                     if (write ^ read) begin
-                        if (write)
+                        if (read)
+                            mem_used[i] <= mem_used[i+1];
+                        if (write) 
                             mem_used[i] <= mem_used[i-1];
-                        else if (read)
-                            mem_used[i] <= mem_used[i+1];     
                     end
                 end
             end
@@ -434,7 +438,7 @@ module altera_avalon_sc_fifo
     // A simultaneous read and write must not change any of 
     // the empty or full flags unless there is a drop on error event.
     // --------------------------------------------------
-    generate if (USE_MEMORY_BLOCKS == 1) begin : gen_blk13
+    generate if (USE_MEMORY_BLOCKS == 1) begin
 
         always @* begin
             next_full = full;
@@ -450,7 +454,7 @@ module altera_avalon_sc_fifo
             if (write && !read) begin
                 if (!drop_on_error)
                   next_empty = 1'b0;
-                else if (curr_sop_ptr == rd_ptr)   // drop on error and only 1 pkt in fifo
+                else if (sop_ptr == rd_ptr)   // drop on error and only 1 pkt in fifo
                   next_empty = 1'b1;
      
                 if (incremented_wr_ptr == rd_ptr && !drop_on_error)
@@ -458,7 +462,7 @@ module altera_avalon_sc_fifo
             end
 
             if (write && read && drop_on_error) begin
-                if (curr_sop_ptr == next_rd_ptr)
+                if (sop_ptr == next_rd_ptr)
                   next_empty = 1'b1;
             end
         end
@@ -474,7 +478,7 @@ module altera_avalon_sc_fifo
             end
         end
 
-    end else begin : gen_blk13_else
+    end else begin
     // --------------------------------------------------
     // Register FIFO Status Management
     //
@@ -529,7 +533,7 @@ module altera_avalon_sc_fifo
     assign in_ready = !full;
     assign internal_out_ready = out_ready || !out_valid;
 
-    generate if (EMPTY_LATENCY > 1) begin : gen_blk14
+    generate if (EMPTY_LATENCY > 1) begin
         always @(posedge clk or posedge reset) begin
             if (reset)
                 internal_out_valid <= 0;
@@ -542,7 +546,7 @@ module altera_avalon_sc_fifo
                 end
             end
         end
-    end else begin : gen_blk14_else
+    end else begin
         always @* begin
             internal_out_valid = !empty & ok_to_forward;
         end
@@ -573,7 +577,7 @@ module altera_avalon_sc_fifo
     // This output stage acts as an extra slot in the FIFO, 
     // and complicates the fill level.
     // --------------------------------------------------
-    generate if (EMPTY_LATENCY == 3) begin : gen_blk15
+    generate if (EMPTY_LATENCY == 3) begin
         always @(posedge clk or posedge reset) begin
             if (reset) begin
                 out_valid   <= 0;
@@ -587,7 +591,7 @@ module altera_avalon_sc_fifo
             end
         end
     end
-    else begin : gen_blk15_else
+    else begin
         always @* begin
             out_valid   = internal_out_valid;
             out_payload = internal_out_payload;
@@ -599,12 +603,7 @@ module altera_avalon_sc_fifo
     // Fill Level
     //
     // The fill level is calculated from the next write
-    // and read pointers to avoid unnecessary latency
-    // and logic.
-    //
-    // However, if the store-and-forward mode of the FIFO
-    // is enabled, the fill level is an up-down counter
-    // for fmax optimization reasons.
+    // and read pointers to avoid unnecessary latency.
     //
     // If the output pipeline is enabled, the fill level 
     // must account for it, or we'll always be off by one.
@@ -615,58 +614,18 @@ module altera_avalon_sc_fifo
     // at the cost of an extra adder when the output stage
     // is enabled.
     // --------------------------------------------------
-    generate if (USE_FILL_LEVEL) begin : gen_blk16
+    generate if (USE_FILL_LEVEL) begin
         wire [31:0] depth32;
         assign depth32 = DEPTH;
-
-        if (USE_STORE_FORWARD) begin
-
-            reg [ADDR_WIDTH : 0] curr_packet_len_less_one;
-            
-            // --------------------------------------------------
-            // We only drop on endofpacket. As long as we don't add to the fill
-            // level on the dropped endofpacket cycle, we can simply subtract
-            // (packet length - 1) from the fill level for dropped packets.
-            // --------------------------------------------------
-            always @(posedge clk or posedge reset) begin
-                if (reset) begin
-                    curr_packet_len_less_one <= 0;
-                end else begin
-                    if (write) begin
-                        curr_packet_len_less_one <= curr_packet_len_less_one + 1'b1;
-                        if (in_endofpacket)
-                            curr_packet_len_less_one <= 0;
-                    end
-                end
+        always @(posedge clk or posedge reset) begin
+            if (reset) 
+                fifo_fill_level <= 0;
+            else if (next_full & !drop_on_error)
+                fifo_fill_level <= depth32[ADDR_WIDTH:0];
+            else begin
+                fifo_fill_level[ADDR_WIDTH]     <= 1'b0;
+                fifo_fill_level[ADDR_WIDTH-1 : 0] <= next_wr_ptr - next_rd_ptr;
             end
-
-            always @(posedge clk or posedge reset) begin
-                if (reset) begin
-                    fifo_fill_level <= 0;
-                end else if (drop_on_error) begin
-                    fifo_fill_level <= fifo_fill_level - curr_packet_len_less_one;
-                    if (read)
-                        fifo_fill_level <= fifo_fill_level - curr_packet_len_less_one - 1'b1;
-                end else if (write && !read) begin
-                    fifo_fill_level <= fifo_fill_level + 1'b1;
-                end else if (read && !write) begin
-                    fifo_fill_level <= fifo_fill_level - 1'b1;
-                end
-            end
-
-        end else begin
-
-            always @(posedge clk or posedge reset) begin
-                if (reset) 
-                    fifo_fill_level <= 0;
-                else if (next_full & !drop_on_error)
-                    fifo_fill_level <= depth32[ADDR_WIDTH:0];
-                else begin
-                    fifo_fill_level[ADDR_WIDTH]     <= 1'b0;
-                    fifo_fill_level[ADDR_WIDTH-1 : 0] <= next_wr_ptr - next_rd_ptr;
-                end
-            end
-
         end
 
         always @* begin
@@ -676,21 +635,19 @@ module altera_avalon_sc_fifo
                 fill_level = fifo_fill_level + {{ADDR_WIDTH{1'b0}}, out_valid};
         end
     end
-    else begin : gen_blk16_else
-        always @* begin
-            fill_level = 0;
-        end  
+    else begin
+        initial fill_level = 0;
     end
     endgenerate
 
-    generate if (USE_ALMOST_FULL_IF) begin : gen_blk17
+    generate if (USE_ALMOST_FULL_IF) begin
       assign almost_full_data = (fill_level >= almost_full_threshold);
     end
     else
       assign almost_full_data = 0;
     endgenerate
 
-    generate if (USE_ALMOST_EMPTY_IF) begin : gen_blk18
+    generate if (USE_ALMOST_EMPTY_IF) begin
       assign almost_empty_data = (fill_level <= almost_empty_threshold);
     end
     else
@@ -709,7 +666,7 @@ module altera_avalon_sc_fifo
     // that there is a cycle of latency between 
     // reads/writes and the updating of the fill level.
     // --------------------------------------------------
-    generate if (USE_STORE_FORWARD) begin : gen_blk19
+    generate if (USE_STORE_FORWARD) begin
     assign max_fifo_size = FIFO_DEPTH - 1;
       always @(posedge clk or posedge reset) begin
           if (reset) begin
@@ -721,35 +678,36 @@ module altera_avalon_sc_fifo
               pkt_mode               <= 1'b1;
           end
           else begin
+             if (csr_write) begin
+               if(csr_address == 3'b010)
+                  almost_full_threshold  <= csr_writedata[23:0]; 
+               if(csr_address == 3'b011)
+                  almost_empty_threshold <= csr_writedata[23:0]; 
+               if(csr_address == 3'b100) begin
+                  cut_through_threshold  <= csr_writedata[23:0]; 
+                  pkt_mode <= (csr_writedata[23:0] == 0);
+                end
+               if(csr_address == 3'b101)
+                  drop_on_error_en       <= csr_writedata[0]; 
+              end
+
               if (csr_read) begin
                 csr_readdata <= 32'b0;
+                if (csr_address == 0)
+                    csr_readdata <= {{(31 - ADDR_WIDTH){1'b0}}, fill_level};
+                if (csr_address == 2)
+                    csr_readdata <= {8'b0, almost_full_threshold};
+                if (csr_address == 3)
+                    csr_readdata <= {8'b0, almost_empty_threshold};
+                if (csr_address == 4)
+                    csr_readdata <= {8'b0, cut_through_threshold};
                 if (csr_address == 5)
                     csr_readdata <= {31'b0, drop_on_error_en};
-                else if (csr_address == 4)
-                    csr_readdata <= {8'b0, cut_through_threshold};
-                else if (csr_address == 3)
-                    csr_readdata <= {8'b0, almost_empty_threshold};
-                else if (csr_address == 2)
-                    csr_readdata <= {8'b0, almost_full_threshold};
-                else if (csr_address == 0)
-                    csr_readdata <= {{(31 - ADDR_WIDTH){1'b0}}, fill_level};
-             end
-             else if (csr_write) begin
-               if(csr_address == 3'b101)
-                   drop_on_error_en       <= csr_writedata[0];
-               else if(csr_address == 3'b100) begin
-                   cut_through_threshold  <= csr_writedata[23:0];
-                   pkt_mode <= (csr_writedata[23:0] == 0);
-               end
-               else if(csr_address == 3'b011)
-                    almost_empty_threshold <= csr_writedata[23:0];
-               else if(csr_address == 3'b010)
-                  almost_full_threshold  <= csr_writedata[23:0];
-             end     
+              end
           end
       end
     end
-    else if (USE_ALMOST_FULL_IF || USE_ALMOST_EMPTY_IF) begin : gen_blk19_else1
+    else if (USE_ALMOST_FULL_IF || USE_ALMOST_EMPTY_IF) begin
     assign max_fifo_size = FIFO_DEPTH - 1;
       always @(posedge clk or posedge reset) begin
           if (reset) begin
@@ -758,25 +716,26 @@ module altera_avalon_sc_fifo
               csr_readdata           <= 0;
           end
           else begin
-             if (csr_read) begin
+             if (csr_write) begin
+               if(csr_address == 3'b010)
+                  almost_full_threshold  <= csr_writedata[23:0];
+               if(csr_address == 3'b011)
+                  almost_empty_threshold <= csr_writedata[23:0];
+              end
+
+              if (csr_read) begin
                 csr_readdata <= 32'b0;
+                if (csr_address == 0)
+                    csr_readdata <= {{(31 - ADDR_WIDTH){1'b0}}, fill_level};
+                if (csr_address == 2)
+                    csr_readdata <= {8'b0, almost_full_threshold};
                 if (csr_address == 3)
                     csr_readdata <= {8'b0, almost_empty_threshold};
-                else if (csr_address == 2)
-                    csr_readdata <= {8'b0, almost_full_threshold};
-                else if (csr_address == 0)
-                    csr_readdata <= {{(31 - ADDR_WIDTH){1'b0}}, fill_level};
-             end
-             else if (csr_write) begin
-               if(csr_address == 3'b011)
-                   almost_empty_threshold <= csr_writedata[23:0];
-               else if(csr_address == 3'b010)
-                  almost_full_threshold  <= csr_writedata[23:0];
-             end       
+              end
           end
       end
     end
-    else begin : gen_blk19_else2
+    else begin
       always @(posedge clk or posedge reset) begin
           if (reset) begin
               csr_readdata <= 0;
@@ -785,7 +744,7 @@ module altera_avalon_sc_fifo
               csr_readdata <= 0;
 
               if (csr_address == 0) 
-                  csr_readdata <= {{(31 - ADDR_WIDTH){1'b0}}, fill_level};
+                  csr_readdata <= fill_level;
           end
       end
     end
@@ -798,7 +757,7 @@ module altera_avalon_sc_fifo
     // cut-threshold condition is met then start sending out
     // data in order to avoid dead-lock situation
 
-    generate if (USE_STORE_FORWARD) begin : gen_blk20
+    generate if (USE_STORE_FORWARD) begin
       assign wait_for_threshold   = (fifo_fill_level_lt_cut_through_threshold) & wait_for_pkt ;
       assign wait_for_pkt         = pkt_cnt_eq_zero  | (pkt_cnt_eq_one  & out_pkt_leave);
       assign ok_to_forward        = (pkt_mode ? (~wait_for_pkt | ~pkt_has_started) : 
@@ -814,6 +773,10 @@ module altera_avalon_sc_fifo
       always @(posedge clk or posedge reset) begin
         if (reset) begin
           pkt_cnt           <= 0;
+          pkt_cnt_r           <= 0;
+          pkt_cnt_plusone   <= 1;
+          pkt_cnt_minusone  <= 0;
+          pkt_cnt_changed   <= 0;
           pkt_has_started   <= 0;
           sop_has_left_fifo <= 0;
           fifo_too_small_r  <= 0;
@@ -824,6 +787,10 @@ module altera_avalon_sc_fifo
         else begin
           fifo_fill_level_lt_cut_through_threshold <= fifo_fill_level < cut_through_threshold;
           fifo_too_small_r <= fifo_too_small;
+          pkt_cnt_plusone  <= pkt_cnt + 1'b1;
+          pkt_cnt_minusone <= pkt_cnt - 1'b1;  
+          pkt_cnt_r        <= pkt_cnt;
+          pkt_cnt_changed  <= 1'b0;
 
           if( in_pkt_eop_arrive )
             sop_has_left_fifo <= 1'b0;
@@ -831,7 +798,8 @@ module altera_avalon_sc_fifo
             sop_has_left_fifo <= 1'b1;
 
           if (in_pkt_eop_arrive & ~out_pkt_leave & ~drop_on_error ) begin
-            pkt_cnt <= pkt_cnt + 1'b1;
+            pkt_cnt_changed <= 1'b1;
+            pkt_cnt <= pkt_cnt_changed ? pkt_cnt_r : pkt_cnt_plusone;
             pkt_cnt_eq_zero <= 0;
             if (pkt_cnt == 0)
               pkt_cnt_eq_one <= 1'b1;
@@ -839,7 +807,8 @@ module altera_avalon_sc_fifo
               pkt_cnt_eq_one <= 1'b0;
           end
           else if((~in_pkt_eop_arrive | drop_on_error) & out_pkt_leave) begin
-            pkt_cnt <= pkt_cnt - 1'b1;
+            pkt_cnt_changed <= 1'b1;
+            pkt_cnt <= pkt_cnt_changed ? pkt_cnt_r : pkt_cnt_minusone;
             if (pkt_cnt == 1) 
               pkt_cnt_eq_zero <= 1'b1;
             else
@@ -876,20 +845,13 @@ module altera_avalon_sc_fifo
             error_in_pkt <= 1'b1;
         end
       end
-
       assign drop_on_error = drop_on_error_en & (error_in_pkt | in_pkt_error) & in_pkt_eop_arrive & 
                             ~sop_has_left_fifo & ~(out_pkt_sop_leave & pkt_cnt_eq_zero);
 
-      assign curr_sop_ptr = (write && in_startofpacket && in_endofpacket) ? wr_ptr : sop_ptr;
-
     end
-    else begin : gen_blk20_else
+    else begin
       assign ok_to_forward = 1'b1;
       assign drop_on_error = 1'b0;
-      if (ADDR_WIDTH <= 1)
-        assign curr_sop_ptr = 1'b0;
-      else
-        assign curr_sop_ptr = {ADDR_WIDTH - 1 { 1'b0 }};
     end
     endgenerate
 
@@ -899,7 +861,7 @@ module altera_avalon_sc_fifo
     // --------------------------------------------------
     function integer log2ceil;
         input integer val;
-        reg[31:0] i;
+        integer i;
 
         begin
             i = 1;
@@ -907,7 +869,7 @@ module altera_avalon_sc_fifo
 
             while (i < val) begin
                 log2ceil = log2ceil + 1;
-                i = i[30:0] << 1;
+                i = i << 1; 
             end
         end
     endfunction

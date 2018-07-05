@@ -1,18 +1,20 @@
-module top_level(clk, rs, rw, en, dat, LCD_N, LCD_P);
+module Mapeada(clk, rs, rw, en, dat, LCD_N, LCD_P);
 input clk;
 output rs,rw,en,LCD_N,LCD_P; 
 output [7:0] dat;
 
 wire [7:0] lcd_processador;
- processor u0 (
+
+ processor processor (
         .clk_clk         (clk),         //      clk.clk
         .reset_reset_n   (1'b1),   //    reset.reset_n
         .switches_export (), // switches.export
         .leds_export     (),     //     leds.export
         .modo_lcd_export (lcd_processador)  // modo_lcd.export
-    );
+ );
 
 
+ 
 LCD1602 LCD1602_inst
 (
 	.clk(clk) ,	// input  clk_sig
