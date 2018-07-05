@@ -15,7 +15,8 @@ input clk;
  reg clkr; 
  reg [1:0] cnt;
  reg result;
- initial result = 1'b0;
+ initial result = 1'b1;
+ reg flag = 1'b0;
 //‭ABCD‬EFAB em hexa
 reg[31:0] crc;
 initial crc = 32'b10101011110011011110111110101011;     //‭‭‭10101011110011011110111110101011;
@@ -41,34 +42,34 @@ initial crc = 32'b10101011110011011110111110101011;     //‭‭‭1010101111001
  assign LCD_N=0;
   assign LCD_P=1;
   
-integer contador = 0;
-integer aux = 0;
+integer contador = 31;
+integer aux = 63;
 integer index;
 
 always @* begin
-for(index = 0; index < 8; index = index+1) begin
-	case(crc[contador+:4])
-		4'b0000: hex[aux+:8] <= 8'd48; //0
-		4'b0001: hex[aux+:8] <= 8'd49; //1
-		4'b0010: hex[aux+:8] <= 8'd50; //2
-		4'b0011: hex[aux+:8] <= 8'd51; //3
-		4'b0100: hex[aux+:8] <= 8'd52; //4
-		4'b0101: hex[aux+:8] <= 8'd53; //5
-		4'b0110: hex[aux+:8] <= 8'd54; //6
-		4'b0111: hex[aux+:8] <= 8'd55; //7
-		4'b1000: hex[aux+:8] <= 8'd56; //8
-		4'b1001: hex[aux+:8] <= 8'd57; //9
-		4'b1010: hex[aux+:8] <= 8'd65; //A
-		4'b1011: hex[aux+:8] <= 8'd66; //B
-		4'b1100: hex[aux+:8] <= 8'd67; //C
-		4'b1101: hex[aux+:8] <= 8'd68; //D
-		4'b1110: hex[aux+:8] <= 8'd69; //E
-		4'b1111: hex[aux+:8] <= 8'd70; //F
+//for(index = 0; index < 8; index = index+1) begin
+	case(crc[31:28])
+		4'b0000: hex[63:56] <= 8'd48; //0
+		4'b0001: hex[63:56] <= 8'd49; //1
+		4'b0010: hex[63:56] <= 8'd50; //2
+		4'b0011: hex[63:56] <= 8'd51; //3
+		4'b0100: hex[63:56] <= 8'd52; //4
+		4'b0101: hex[63:56] <= 8'd53; //5
+		4'b0110: hex[63:56] <= 8'd54; //6
+		4'b0111: hex[63:56] <= 8'd55; //7
+		4'b1000: hex[63:56] <= 8'd56; //8
+		4'b1001: hex[63:56] <= 8'd57; //9
+		4'b1010: hex[63:56] <= 8'd65; //A
+		4'b1011: hex[63:56] <= 8'd66; //B
+		4'b1100: hex[63:56] <= 8'd67; //C
+		4'b1101: hex[63:56] <= 8'd68; //D
+		4'b1110: hex[63:56] <= 8'd69; //E
+		4'b1111: hex[63:56] <= 8'd70; //F
 	endcase
-	contador = contador + 4;
-	aux = aux + 8;
-end
-result = 1'b1;
+	flag = 1'b1;
+	contador = contador - 4;
+	aux = aux - 8;
+//end
 end
 
 always @(posedge clk)      
@@ -80,7 +81,7 @@ end
 
 
 
-always @(result) 
+always @(posedge clk && flag) 
 begin 
  current=next;
  if(result) begin
@@ -92,7 +93,7 @@ begin
 
     dat0:   begin  rs<=1; dat<="C"; next<=dat1; end 
     dat1:   begin  rs<=1; dat<=" "; next<=dat2; end 
-    dat2:   begin  rs<=1; dat<=hex[63:56]; next<=dat3; end 
+    dat2:   begin  rs<=1; dat<="A"; next<=dat3; end 
     dat3:   begin  rs<=1; dat<=hex[55:48]; next<=dat4; end 
     dat4:   begin  rs<=1; dat<=hex[47:40]; next<=dat5; end 
     dat5:   begin  rs<=1; dat<=hex[39:32]; next<=dat6; end 
@@ -135,3 +136,5 @@ begin
 assign en=clkr|e; 
 assign rw=0; 
 endmodule  
+
+
