@@ -1,0 +1,563 @@
+Analysis & Synthesis report for Mapeada
+Wed Jul  4 18:18:22 2018
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Analysis & Synthesis Summary
+  3. Analysis & Synthesis Settings
+  4. Parallel Compilation
+  5. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Suppressed Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++---------------------------------------------------------------------------------+
+; Analysis & Synthesis Summary                                                    ;
++------------------------------------+--------------------------------------------+
+; Analysis & Synthesis Status        ; Failed - Wed Jul  4 18:18:22 2018          ;
+; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
+; Revision Name                      ; Mapeada                                    ;
+; Top-level Entity Name              ; Mapeada                                    ;
+; Family                             ; Cyclone IV E                               ;
+; Total logic elements               ; N/A until Partition Merge                  ;
+;     Total combinational functions  ; N/A until Partition Merge                  ;
+;     Dedicated logic registers      ; N/A until Partition Merge                  ;
+; Total registers                    ; N/A until Partition Merge                  ;
+; Total pins                         ; N/A until Partition Merge                  ;
+; Total virtual pins                 ; N/A until Partition Merge                  ;
+; Total memory bits                  ; N/A until Partition Merge                  ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                  ;
+; Total PLLs                         ; N/A until Partition Merge                  ;
++------------------------------------+--------------------------------------------+
+
+
++----------------------------------------------------------------------------------------------------------------------+
+; Analysis & Synthesis Settings                                                                                        ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Option                                                                     ; Setting            ; Default Value      ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+; Device                                                                     ; EP4CE10F17C8       ;                    ;
+; Top-level entity name                                                      ; Mapeada            ; Mapeada            ;
+; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
+; Use smart compilation                                                      ; Off                ; Off                ;
+; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
+; Enable compact report table                                                ; Off                ; Off                ;
+; Restructure Multiplexers                                                   ; Auto               ; Auto               ;
+; Create Debugging Nodes for IP Cores                                        ; Off                ; Off                ;
+; Preserve fewer node names                                                  ; On                 ; On                 ;
+; Disable OpenCore Plus hardware evaluation                                  ; Off                ; Off                ;
+; Verilog Version                                                            ; Verilog_2001       ; Verilog_2001       ;
+; VHDL Version                                                               ; VHDL_1993          ; VHDL_1993          ;
+; State Machine Processing                                                   ; Auto               ; Auto               ;
+; Safe State Machine                                                         ; Off                ; Off                ;
+; Extract Verilog State Machines                                             ; On                 ; On                 ;
+; Extract VHDL State Machines                                                ; On                 ; On                 ;
+; Ignore Verilog initial constructs                                          ; Off                ; Off                ;
+; Iteration limit for constant Verilog loops                                 ; 5000               ; 5000               ;
+; Iteration limit for non-constant Verilog loops                             ; 250                ; 250                ;
+; Add Pass-Through Logic to Inferred RAMs                                    ; On                 ; On                 ;
+; Infer RAMs from Raw Logic                                                  ; On                 ; On                 ;
+; Parallel Synthesis                                                         ; On                 ; On                 ;
+; DSP Block Balancing                                                        ; Auto               ; Auto               ;
+; NOT Gate Push-Back                                                         ; On                 ; On                 ;
+; Power-Up Don't Care                                                        ; On                 ; On                 ;
+; Remove Redundant Logic Cells                                               ; Off                ; Off                ;
+; Remove Duplicate Registers                                                 ; On                 ; On                 ;
+; Ignore CARRY Buffers                                                       ; Off                ; Off                ;
+; Ignore CASCADE Buffers                                                     ; Off                ; Off                ;
+; Ignore GLOBAL Buffers                                                      ; Off                ; Off                ;
+; Ignore ROW GLOBAL Buffers                                                  ; Off                ; Off                ;
+; Ignore LCELL Buffers                                                       ; Off                ; Off                ;
+; Ignore SOFT Buffers                                                        ; On                 ; On                 ;
+; Limit AHDL Integers to 32 Bits                                             ; Off                ; Off                ;
+; Optimization Technique                                                     ; Balanced           ; Balanced           ;
+; Carry Chain Length                                                         ; 70                 ; 70                 ;
+; Auto Carry Chains                                                          ; On                 ; On                 ;
+; Auto Open-Drain Pins                                                       ; On                 ; On                 ;
+; Perform WYSIWYG Primitive Resynthesis                                      ; Off                ; Off                ;
+; Auto ROM Replacement                                                       ; On                 ; On                 ;
+; Auto RAM Replacement                                                       ; On                 ; On                 ;
+; Auto DSP Block Replacement                                                 ; On                 ; On                 ;
+; Auto Shift Register Replacement                                            ; Auto               ; Auto               ;
+; Allow Shift Register Merging across Hierarchies                            ; Auto               ; Auto               ;
+; Auto Clock Enable Replacement                                              ; On                 ; On                 ;
+; Strict RAM Replacement                                                     ; Off                ; Off                ;
+; Allow Synchronous Control Signals                                          ; On                 ; On                 ;
+; Force Use of Synchronous Clear Signals                                     ; Off                ; Off                ;
+; Auto RAM Block Balancing                                                   ; On                 ; On                 ;
+; Auto RAM to Logic Cell Conversion                                          ; Off                ; Off                ;
+; Auto Resource Sharing                                                      ; Off                ; Off                ;
+; Allow Any RAM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any ROM Size For Recognition                                         ; Off                ; Off                ;
+; Allow Any Shift Register Size For Recognition                              ; Off                ; Off                ;
+; Use LogicLock Constraints during Resource Balancing                        ; On                 ; On                 ;
+; Ignore translate_off and synthesis_off directives                          ; Off                ; Off                ;
+; Timing-Driven Synthesis                                                    ; On                 ; On                 ;
+; Report Parameter Settings                                                  ; On                 ; On                 ;
+; Report Source Assignments                                                  ; On                 ; On                 ;
+; Report Connectivity Checks                                                 ; On                 ; On                 ;
+; Ignore Maximum Fan-Out Assignments                                         ; Off                ; Off                ;
+; Synchronization Register Chain Length                                      ; 2                  ; 2                  ;
+; PowerPlay Power Optimization                                               ; Normal compilation ; Normal compilation ;
+; HDL message level                                                          ; Level2             ; Level2             ;
+; Suppress Register Optimization Related Messages                            ; Off                ; Off                ;
+; Number of Removed Registers Reported in Synthesis Report                   ; 5000               ; 5000               ;
+; Number of Swept Nodes Reported in Synthesis Report                         ; 5000               ; 5000               ;
+; Number of Inverted Registers Reported in Synthesis Report                  ; 100                ; 100                ;
+; Clock MUX Protection                                                       ; On                 ; On                 ;
+; Auto Gated Clock Conversion                                                ; Off                ; Off                ;
+; Block Design Naming                                                        ; Auto               ; Auto               ;
+; SDC constraint protection                                                  ; Off                ; Off                ;
+; Synthesis Effort                                                           ; Auto               ; Auto               ;
+; Shift Register Replacement - Allow Asynchronous Clear Signal               ; On                 ; On                 ;
+; Pre-Mapping Resynthesis Optimization                                       ; Off                ; Off                ;
+; Analysis & Synthesis Message Level                                         ; Medium             ; Medium             ;
+; Disable Register Merging Across Hierarchies                                ; Auto               ; Auto               ;
+; Resource Aware Inference For Block RAM                                     ; On                 ; On                 ;
+; Synthesis Seed                                                             ; 1                  ; 1                  ;
++----------------------------------------------------------------------------+--------------------+--------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 4      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
++-------------------------------+
+; Analysis & Synthesis Messages ;
++-------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Wed Jul  4 18:17:32 2018
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Mapeada -c Mapeada
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12248): Elaborating Qsys system entity "processor.qsys"
+Info (12250): 2018.07.04.18:17:39 Progress: Loading Quartus Teste Memoria Mapeada 2/processor.qsys
+Info (12250): 2018.07.04.18:17:39 Progress: Reading input file
+Info (12250): 2018.07.04.18:17:40 Progress: Adding clk_0 [clock_source 13.1]
+Info (12250): 2018.07.04.18:17:41 Progress: Parameterizing module clk_0
+Info (12250): 2018.07.04.18:17:41 Progress: Adding nios2_qsys_0 [altera_nios2_qsys 13.1]
+Info (12250): 2018.07.04.18:17:41 Progress: Parameterizing module nios2_qsys_0
+Info (12250): 2018.07.04.18:17:41 Progress: Adding onchip_memory2_0 [altera_avalon_onchip_memory2 13.1]
+Info (12250): 2018.07.04.18:17:42 Progress: Parameterizing module onchip_memory2_0
+Info (12250): 2018.07.04.18:17:42 Progress: Adding switches [altera_avalon_pio 13.1]
+Info (12250): 2018.07.04.18:17:42 Progress: Parameterizing module switches
+Info (12250): 2018.07.04.18:17:42 Progress: Adding leds [altera_avalon_pio 13.1]
+Info (12250): 2018.07.04.18:17:42 Progress: Parameterizing module leds
+Info (12250): 2018.07.04.18:17:42 Progress: Adding jtag_uart_0 [altera_avalon_jtag_uart 13.1]
+Info (12250): 2018.07.04.18:17:42 Progress: Parameterizing module jtag_uart_0
+Info (12250): 2018.07.04.18:17:42 Progress: Adding pio_0 [altera_avalon_pio 13.1]
+Info (12250): 2018.07.04.18:17:42 Progress: Parameterizing module pio_0
+Info (12250): 2018.07.04.18:17:42 Progress: Building connections
+Info (12250): 2018.07.04.18:17:42 Progress: Parameterizing connections
+Info (12250): 2018.07.04.18:17:42 Progress: Validating
+Info (12250): 2018.07.04.18:17:44 Progress: Done reading input file
+Info (12250): Processor.switches: PIO inputs are not hardwired in test bench. Undefined values will be read from PIO inputs during simulation.
+Info (12250): Processor: Generating processor "processor" for QUARTUS_SYNTH
+Info (12250): Pipeline_bridge_swap_transform: After transform: 7 modules, 25 connections
+Info (12250): No custom instruction connections, skipping transform 
+Info (12250): Merlin_initial_interconnect_transform: After transform: 7 modules, 24 connections
+Info (12250): Merlin_translator_transform: After transform: 15 modules, 48 connections
+Info (12250): Merlin_domain_transform: After transform: 30 modules, 122 connections
+Info (12250): Merlin_router_transform: After transform: 38 modules, 146 connections
+Info (12250): Merlin_network_to_switch_transform: After transform: 53 modules, 186 connections
+Info (12250): Merlin_clock_and_reset_bridge_transform: After transform: 55 modules, 240 connections
+Info (12250): Merlin_hierarchy_transform: After transform: 8 modules, 23 connections
+Info (12250): Merlin_mm_transform: After transform: 8 modules, 23 connections
+Info (12250): Merlin_interrupt_mapper_transform: After transform: 9 modules, 26 connections
+Info (12250): Reset_adaptation_transform: After transform: 11 modules, 35 connections
+Info (12250): Nios2_qsys_0: Starting RTL generation for module 'processor_nios2_qsys_0'
+Info (12250): Nios2_qsys_0:   Generation command is [exec /home/gaut/Programs/altera/13.1/quartus/linux/eperlcmd -I /home/gaut/Programs/altera/13.1/quartus/linux/perl/lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/europa -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2/cpu_lib -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2/nios_lib -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2 -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2 -- /home/gaut/Programs/altera/13.1/quartus/../ip/altera/nios2_ip/altera_nios2/generate_rtl.epl --name=processor_nios2_qsys_0 --dir=/tmp/alt7716_6595694712139682885.dir/0001_nios2_qsys_0_gen/ --quartus_dir=/home/gaut/Programs/altera/13.1/quartus --verilog --config=/tmp/alt7716_6595694712139682885.dir/0001_nios2_qsys_0_gen//processor_nios2_qsys_0_processor_configuration.pl  --do_build_sim=0  ]
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:01 (*) Starting Nios II generation
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:01 (*)   Checking for plaintext license.
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:05 (*)   Couldn't query license setup in Quartus directory /home/gaut/Programs/altera/13.1/quartus
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:05 (*)   Defaulting to contents of LM_LICENSE_FILE environment variable
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:05 (*)   LM_LICENSE_FILE environment variable is empty
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:05 (*)   Plaintext license not found.
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:05 (*)   No license required to generate encrypted Nios II/e.
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:05 (*)   Elaborating CPU configuration settings
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:05 (*)   Creating all objects for CPU
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:08 (*)   Generating RTL from CPU objects
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:08 (*)   Creating plain-text RTL
+Info (12250): Nios2_qsys_0: # 2018.07.04 18:18:14 (*) Done Nios II generation
+Info (12250): Nios2_qsys_0: Done RTL generation for module 'processor_nios2_qsys_0'
+Info (12250): Nios2_qsys_0: "processor" instantiated altera_nios2_qsys "nios2_qsys_0"
+Info (12250): Onchip_memory2_0: Starting RTL generation for module 'processor_onchip_memory2_0'
+Info (12250): Onchip_memory2_0:   Generation command is [exec /home/gaut/Programs/altera/13.1/quartus/linux/perl/bin/perl -I /home/gaut/Programs/altera/13.1/quartus/linux/perl/lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/europa -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2 -- /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_onchip_memory2/generate_rtl.pl --name=processor_onchip_memory2_0 --dir=/tmp/alt7716_6595694712139682885.dir/0002_onchip_memory2_0_gen/ --quartus_dir=/home/gaut/Programs/altera/13.1/quartus --verilog --config=/tmp/alt7716_6595694712139682885.dir/0002_onchip_memory2_0_gen//processor_onchip_memory2_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Onchip_memory2_0: Done RTL generation for module 'processor_onchip_memory2_0'
+Info (12250): Onchip_memory2_0: "processor" instantiated altera_avalon_onchip_memory2 "onchip_memory2_0"
+Info (12250): Switches: Starting RTL generation for module 'processor_switches'
+Info (12250): Switches:   Generation command is [exec /home/gaut/Programs/altera/13.1/quartus/linux/perl/bin/perl -I /home/gaut/Programs/altera/13.1/quartus/linux/perl/lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/europa -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=processor_switches --dir=/tmp/alt7716_6595694712139682885.dir/0003_switches_gen/ --quartus_dir=/home/gaut/Programs/altera/13.1/quartus --verilog --config=/tmp/alt7716_6595694712139682885.dir/0003_switches_gen//processor_switches_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Switches: Done RTL generation for module 'processor_switches'
+Info (12250): Switches: "processor" instantiated altera_avalon_pio "switches"
+Info (12250): Leds: Starting RTL generation for module 'processor_leds'
+Info (12250): Leds:   Generation command is [exec /home/gaut/Programs/altera/13.1/quartus/linux/perl/bin/perl -I /home/gaut/Programs/altera/13.1/quartus/linux/perl/lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/europa -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio -- /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_pio/generate_rtl.pl --name=processor_leds --dir=/tmp/alt7716_6595694712139682885.dir/0004_leds_gen/ --quartus_dir=/home/gaut/Programs/altera/13.1/quartus --verilog --config=/tmp/alt7716_6595694712139682885.dir/0004_leds_gen//processor_leds_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Leds: Done RTL generation for module 'processor_leds'
+Info (12250): Leds: "processor" instantiated altera_avalon_pio "leds"
+Info (12250): Jtag_uart_0: Starting RTL generation for module 'processor_jtag_uart_0'
+Info (12250): Jtag_uart_0:   Generation command is [exec /home/gaut/Programs/altera/13.1/quartus/linux/perl/bin/perl -I /home/gaut/Programs/altera/13.1/quartus/linux/perl/lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/europa -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin/perl_lib -I /home/gaut/Programs/altera/13.1/quartus/sopc_builder/bin -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/common -I /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart -- /home/gaut/Programs/altera/13.1/quartus/../ip/altera/sopc_builder_ip/altera_avalon_jtag_uart/generate_rtl.pl --name=processor_jtag_uart_0 --dir=/tmp/alt7716_6595694712139682885.dir/0005_jtag_uart_0_gen/ --quartus_dir=/home/gaut/Programs/altera/13.1/quartus --verilog --config=/tmp/alt7716_6595694712139682885.dir/0005_jtag_uart_0_gen//processor_jtag_uart_0_component_configuration.pl  --do_build_sim=0  ]
+Info (12250): Jtag_uart_0: Done RTL generation for module 'processor_jtag_uart_0'
+Info (12250): Jtag_uart_0: "processor" instantiated altera_avalon_jtag_uart "jtag_uart_0"
+Info (12250): Pipeline_bridge_swap_transform: After transform: 48 modules, 167 connections
+Info (12250): No custom instruction connections, skipping transform 
+Info (12250): Merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info (12250): No Avalon connections, skipping transform 
+Info (12250): Merlin_hierarchy_transform: After transform: 48 modules, 167 connections
+Info (12250): Merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info (12250): No Avalon connections, skipping transform 
+Info (12250): Merlin_hierarchy_transform: After transform: 48 modules, 167 connections
+Info (12250): Merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info (12250): No Avalon connections, skipping transform 
+Info (12250): Merlin_hierarchy_transform: After transform: 48 modules, 167 connections
+Info (12250): Merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info (12250): No Avalon connections, skipping transform 
+Info (12250): Merlin_hierarchy_transform: After transform: 48 modules, 167 connections
+Info (12250): Merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info (12250): No Avalon connections, skipping transform 
+Info (12250): Merlin_hierarchy_transform: After transform: 48 modules, 167 connections
+Info (12250): Merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info (12250): No Avalon connections, skipping transform 
+Info (12250): Merlin_hierarchy_transform: After transform: 48 modules, 167 connections
+Info (12250): Merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info (12250): No Avalon connections, skipping transform 
+Info (12250): Merlin_hierarchy_transform: After transform: 48 modules, 167 connections
+Info (12250): Merlin_initial_interconnect_transform: After transform: 0 modules, 0 connections
+Info (12250): No Avalon connections, skipping transform 
+Info (12250): Merlin_hierarchy_transform: After transform: 48 modules, 167 connections
+Info (12250): Mm_interconnect_0: "processor" instantiated altera_merlin_interconnect_wrapper "mm_interconnect_0"
+Info (12250): Irq_mapper: "processor" instantiated altera_irq_mapper "irq_mapper"
+Info (12250): Rst_controller: "processor" instantiated altera_reset_controller "rst_controller"
+Info (12250): Nios2_qsys_0_instruction_master_translator: "mm_interconnect_0" instantiated altera_merlin_master_translator "nios2_qsys_0_instruction_master_translator"
+Info (12250): Nios2_qsys_0_jtag_debug_module_translator: "mm_interconnect_0" instantiated altera_merlin_slave_translator "nios2_qsys_0_jtag_debug_module_translator"
+Info (12250): Nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent: "mm_interconnect_0" instantiated altera_merlin_master_agent "nios2_qsys_0_instruction_master_translator_avalon_universal_master_0_agent"
+Info (12250): Nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent: "mm_interconnect_0" instantiated altera_merlin_slave_agent "nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent"
+Info (12250): Nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo: "mm_interconnect_0" instantiated altera_avalon_sc_fifo "nios2_qsys_0_jtag_debug_module_translator_avalon_universal_slave_0_agent_rsp_fifo"
+Info (12250): Addr_router: "mm_interconnect_0" instantiated altera_merlin_router "addr_router"
+Info (12250): Id_router: "mm_interconnect_0" instantiated altera_merlin_router "id_router"
+Info (12250): Cmd_xbar_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "cmd_xbar_demux"
+Info (12250): Cmd_xbar_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "cmd_xbar_mux"
+Info (12250): Rsp_xbar_demux: "mm_interconnect_0" instantiated altera_merlin_demultiplexer "rsp_xbar_demux"
+Info (12250): Rsp_xbar_mux: "mm_interconnect_0" instantiated altera_merlin_multiplexer "rsp_xbar_mux"
+Info (12250): Reusing file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_merlin_arbitrator.sv
+Info (12250): Processor: Done "processor" with 20 modules, 33 files, 802561 bytes
+Info (12249): Finished elaborating Qsys system entity "processor.qsys"
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_switches.v
+    Info (12023): Found entity 1: processor_switches
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_onchip_memory2_0.v
+    Info (12023): Found entity 1: processor_onchip_memory2_0
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_test_bench.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_test_bench
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_oci_test_bench.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_oci_test_bench
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_jtag_debug_module_wrapper.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_jtag_debug_module_wrapper
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_jtag_debug_module_tck.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_jtag_debug_module_tck
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_jtag_debug_module_sysclk.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_jtag_debug_module_sysclk
+Info (12021): Found 21 design units, including 21 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_register_bank_a_module
+    Info (12023): Found entity 2: processor_nios2_qsys_0_register_bank_b_module
+    Info (12023): Found entity 3: processor_nios2_qsys_0_nios2_oci_debug
+    Info (12023): Found entity 4: processor_nios2_qsys_0_ociram_sp_ram_module
+    Info (12023): Found entity 5: processor_nios2_qsys_0_nios2_ocimem
+    Info (12023): Found entity 6: processor_nios2_qsys_0_nios2_avalon_reg
+    Info (12023): Found entity 7: processor_nios2_qsys_0_nios2_oci_break
+    Info (12023): Found entity 8: processor_nios2_qsys_0_nios2_oci_xbrk
+    Info (12023): Found entity 9: processor_nios2_qsys_0_nios2_oci_dbrk
+    Info (12023): Found entity 10: processor_nios2_qsys_0_nios2_oci_itrace
+    Info (12023): Found entity 11: processor_nios2_qsys_0_nios2_oci_td_mode
+    Info (12023): Found entity 12: processor_nios2_qsys_0_nios2_oci_dtrace
+    Info (12023): Found entity 13: processor_nios2_qsys_0_nios2_oci_compute_input_tm_cnt
+    Info (12023): Found entity 14: processor_nios2_qsys_0_nios2_oci_fifo_wrptr_inc
+    Info (12023): Found entity 15: processor_nios2_qsys_0_nios2_oci_fifo_cnt_inc
+    Info (12023): Found entity 16: processor_nios2_qsys_0_nios2_oci_fifo
+    Info (12023): Found entity 17: processor_nios2_qsys_0_nios2_oci_pib
+    Info (12023): Found entity 18: processor_nios2_qsys_0_nios2_oci_im
+    Info (12023): Found entity 19: processor_nios2_qsys_0_nios2_performance_monitors
+    Info (12023): Found entity 20: processor_nios2_qsys_0_nios2_oci
+    Info (12023): Found entity 21: processor_nios2_qsys_0
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_rsp_xbar_mux.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_rsp_xbar_mux
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_rsp_xbar_demux.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_rsp_xbar_demux
+Info (12021): Found 2 design units, including 2 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_id_router.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_id_router_default_decode
+    Info (12023): Found entity 2: processor_mm_interconnect_0_id_router
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_cmd_xbar_mux.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_cmd_xbar_mux
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_cmd_xbar_demux.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_cmd_xbar_demux
+Info (12021): Found 2 design units, including 2 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_addr_router.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_addr_router_default_decode
+    Info (12023): Found entity 2: processor_mm_interconnect_0_addr_router
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0.v
+    Info (12023): Found entity 1: processor_mm_interconnect_0
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_leds.v
+    Info (12023): Found entity 1: processor_leds
+Info (12021): Found 5 design units, including 5 entities, in source file processor/synthesis/submodules/processor_jtag_uart_0.v
+    Info (12023): Found entity 1: processor_jtag_uart_0_sim_scfifo_w
+    Info (12023): Found entity 2: processor_jtag_uart_0_scfifo_w
+    Info (12023): Found entity 3: processor_jtag_uart_0_sim_scfifo_r
+    Info (12023): Found entity 4: processor_jtag_uart_0_scfifo_r
+    Info (12023): Found entity 5: processor_jtag_uart_0
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_irq_mapper.sv
+    Info (12023): Found entity 1: processor_irq_mapper
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_reset_synchronizer.v
+    Info (12023): Found entity 1: altera_reset_synchronizer
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_reset_controller.v
+    Info (12023): Found entity 1: altera_reset_controller
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_slave_translator.sv
+    Info (12023): Found entity 1: altera_merlin_slave_translator
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_slave_agent.sv
+    Info (12023): Found entity 1: altera_merlin_slave_agent
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_master_translator.sv
+    Info (12023): Found entity 1: altera_merlin_master_translator
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_master_agent.sv
+    Info (12023): Found entity 1: altera_merlin_master_agent
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+    Info (12023): Found entity 1: altera_merlin_burst_uncompressor
+Info (12021): Found 2 design units, including 2 entities, in source file processor/synthesis/submodules/altera_merlin_arbitrator.sv
+    Info (12023): Found entity 1: altera_merlin_arbitrator
+    Info (12023): Found entity 2: altera_merlin_arb_adder
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_avalon_sc_fifo.v
+    Info (12023): Found entity 1: altera_avalon_sc_fifo
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/processor.v
+    Info (12023): Found entity 1: processor
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_reset_controller.v
+    Info (12023): Found entity 1: altera_reset_controller
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_reset_synchronizer.v
+    Info (12023): Found entity 1: altera_reset_synchronizer
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_irq_mapper.sv
+    Info (12023): Found entity 1: processor_irq_mapper
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0.v
+    Info (12023): Found entity 1: processor_mm_interconnect_0
+Info (12021): Found 2 design units, including 2 entities, in source file processor/synthesis/submodules/altera_merlin_arbitrator.sv
+    Info (12023): Found entity 1: altera_merlin_arbitrator
+    Info (12023): Found entity 2: altera_merlin_arb_adder
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_rsp_xbar_mux.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_rsp_xbar_mux
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_rsp_xbar_demux.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_rsp_xbar_demux
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_cmd_xbar_mux.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_cmd_xbar_mux
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_cmd_xbar_demux.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_cmd_xbar_demux
+Info (12021): Found 2 design units, including 2 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_id_router.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_id_router_default_decode
+    Info (12023): Found entity 2: processor_mm_interconnect_0_id_router
+Info (12021): Found 2 design units, including 2 entities, in source file processor/synthesis/submodules/processor_mm_interconnect_0_addr_router.sv
+    Info (12023): Found entity 1: processor_mm_interconnect_0_addr_router_default_decode
+    Info (12023): Found entity 2: processor_mm_interconnect_0_addr_router
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_avalon_sc_fifo.v
+    Info (12023): Found entity 1: altera_avalon_sc_fifo
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_slave_agent.sv
+    Info (12023): Found entity 1: altera_merlin_slave_agent
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_burst_uncompressor.sv
+    Info (12023): Found entity 1: altera_merlin_burst_uncompressor
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_master_agent.sv
+    Info (12023): Found entity 1: altera_merlin_master_agent
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_slave_translator.sv
+    Info (12023): Found entity 1: altera_merlin_slave_translator
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/altera_merlin_master_translator.sv
+    Info (12023): Found entity 1: altera_merlin_master_translator
+Info (12021): Found 5 design units, including 5 entities, in source file processor/synthesis/submodules/processor_jtag_uart_0.v
+    Info (12023): Found entity 1: processor_jtag_uart_0_sim_scfifo_w
+    Info (12023): Found entity 2: processor_jtag_uart_0_scfifo_w
+    Info (12023): Found entity 3: processor_jtag_uart_0_sim_scfifo_r
+    Info (12023): Found entity 4: processor_jtag_uart_0_scfifo_r
+    Info (12023): Found entity 5: processor_jtag_uart_0
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_leds.v
+    Info (12023): Found entity 1: processor_leds
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_switches.v
+    Info (12023): Found entity 1: processor_switches
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_onchip_memory2_0.v
+    Info (12023): Found entity 1: processor_onchip_memory2_0
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_jtag_debug_module_tck.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_jtag_debug_module_tck
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_oci_test_bench.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_oci_test_bench
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_jtag_debug_module_wrapper.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_jtag_debug_module_wrapper
+Info (12021): Found 21 design units, including 21 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_register_bank_a_module
+    Info (12023): Found entity 2: processor_nios2_qsys_0_register_bank_b_module
+    Info (12023): Found entity 3: processor_nios2_qsys_0_nios2_oci_debug
+    Info (12023): Found entity 4: processor_nios2_qsys_0_ociram_sp_ram_module
+    Info (12023): Found entity 5: processor_nios2_qsys_0_nios2_ocimem
+    Info (12023): Found entity 6: processor_nios2_qsys_0_nios2_avalon_reg
+    Info (12023): Found entity 7: processor_nios2_qsys_0_nios2_oci_break
+    Info (12023): Found entity 8: processor_nios2_qsys_0_nios2_oci_xbrk
+    Info (12023): Found entity 9: processor_nios2_qsys_0_nios2_oci_dbrk
+    Info (12023): Found entity 10: processor_nios2_qsys_0_nios2_oci_itrace
+    Info (12023): Found entity 11: processor_nios2_qsys_0_nios2_oci_td_mode
+    Info (12023): Found entity 12: processor_nios2_qsys_0_nios2_oci_dtrace
+    Info (12023): Found entity 13: processor_nios2_qsys_0_nios2_oci_compute_input_tm_cnt
+    Info (12023): Found entity 14: processor_nios2_qsys_0_nios2_oci_fifo_wrptr_inc
+    Info (12023): Found entity 15: processor_nios2_qsys_0_nios2_oci_fifo_cnt_inc
+    Info (12023): Found entity 16: processor_nios2_qsys_0_nios2_oci_fifo
+    Info (12023): Found entity 17: processor_nios2_qsys_0_nios2_oci_pib
+    Info (12023): Found entity 18: processor_nios2_qsys_0_nios2_oci_im
+    Info (12023): Found entity 19: processor_nios2_qsys_0_nios2_performance_monitors
+    Info (12023): Found entity 20: processor_nios2_qsys_0_nios2_oci
+    Info (12023): Found entity 21: processor_nios2_qsys_0
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_test_bench.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_test_bench
+Info (12021): Found 1 design units, including 1 entities, in source file processor/synthesis/submodules/processor_nios2_qsys_0_jtag_debug_module_sysclk.v
+    Info (12023): Found entity 1: processor_nios2_qsys_0_jtag_debug_module_sysclk
+Info (12021): Found 1 design units, including 1 entities, in source file Mapeada.v
+    Info (12023): Found entity 1: top_level
+Info (12021): Found 1 design units, including 1 entities, in source file LCD1602.v
+    Info (12023): Found entity 1: LCD1602
+Info (12021): Found 1 design units, including 1 entities, in source file db/ip/processor/processor.v
+    Info (12023): Found entity 1: processor
+Error (10228): Verilog HDL error at altera_avalon_sc_fifo.v(21): module "altera_avalon_sc_fifo" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_avalon_sc_fifo.v Line: 21
+Info (10499): HDL info at altera_avalon_sc_fifo.v(21): see declaration for object "altera_avalon_sc_fifo"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_avalon_sc_fifo.v
+Error (10228): Verilog HDL error at altera_merlin_arbitrator.sv(103): module "altera_merlin_arbitrator" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_merlin_arbitrator.sv Line: 103
+Info (10499): HDL info at altera_merlin_arbitrator.sv(103): see declaration for object "altera_merlin_arbitrator"
+Error (10112): Ignored design unit "altera_merlin_arb_adder" at altera_merlin_arbitrator.sv(228) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_merlin_arbitrator.sv Line: 228
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_merlin_arbitrator.sv
+Error (10228): Verilog HDL error at altera_merlin_burst_uncompressor.sv(40): module "altera_merlin_burst_uncompressor" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_merlin_burst_uncompressor.sv Line: 40
+Info (10499): HDL info at altera_merlin_burst_uncompressor.sv(40): see declaration for object "altera_merlin_burst_uncompressor"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_merlin_burst_uncompressor.sv
+Error (10228): Verilog HDL error at altera_merlin_master_agent.sv(28): module "altera_merlin_master_agent" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_merlin_master_agent.sv Line: 28
+Info (10499): HDL info at altera_merlin_master_agent.sv(28): see declaration for object "altera_merlin_master_agent"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_merlin_master_agent.sv
+Error (10228): Verilog HDL error at altera_merlin_master_translator.sv(30): module "altera_merlin_master_translator" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_merlin_master_translator.sv Line: 30
+Info (10499): HDL info at altera_merlin_master_translator.sv(30): see declaration for object "altera_merlin_master_translator"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_merlin_master_translator.sv
+Error (10228): Verilog HDL error at altera_merlin_slave_agent.sv(34): module "altera_merlin_slave_agent" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_merlin_slave_agent.sv Line: 34
+Info (10499): HDL info at altera_merlin_slave_agent.sv(34): see declaration for object "altera_merlin_slave_agent"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_merlin_slave_agent.sv
+Error (10228): Verilog HDL error at altera_merlin_slave_translator.sv(35): module "altera_merlin_slave_translator" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_merlin_slave_translator.sv Line: 35
+Info (10499): HDL info at altera_merlin_slave_translator.sv(35): see declaration for object "altera_merlin_slave_translator"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_merlin_slave_translator.sv
+Error (10228): Verilog HDL error at altera_reset_controller.v(42): module "altera_reset_controller" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_reset_controller.v Line: 42
+Info (10499): HDL info at altera_reset_controller.v(42): see declaration for object "altera_reset_controller"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_reset_controller.v
+Error (10228): Verilog HDL error at altera_reset_synchronizer.v(24): module "altera_reset_synchronizer" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/altera_reset_synchronizer.v Line: 24
+Info (10499): HDL info at altera_reset_synchronizer.v(24): see declaration for object "altera_reset_synchronizer"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/altera_reset_synchronizer.v
+Error (10228): Verilog HDL error at processor_irq_mapper.sv(31): module "processor_irq_mapper" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_irq_mapper.sv Line: 31
+Info (10499): HDL info at processor_irq_mapper.sv(31): see declaration for object "processor_irq_mapper"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_irq_mapper.sv
+Error (10228): Verilog HDL error at processor_jtag_uart_0.v(21): module "processor_jtag_uart_0_sim_scfifo_w" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_jtag_uart_0.v Line: 21
+Info (10499): HDL info at processor_jtag_uart_0.v(21): see declaration for object "processor_jtag_uart_0_sim_scfifo_w"
+Error (10112): Ignored design unit "processor_jtag_uart_0_scfifo_w" at processor_jtag_uart_0.v(77) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_jtag_uart_0.v Line: 77
+Error (10112): Ignored design unit "processor_jtag_uart_0_sim_scfifo_r" at processor_jtag_uart_0.v(162) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_jtag_uart_0.v Line: 162
+Error (10112): Ignored design unit "processor_jtag_uart_0_scfifo_r" at processor_jtag_uart_0.v(240) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_jtag_uart_0.v Line: 240
+Error (10112): Ignored design unit "processor_jtag_uart_0" at processor_jtag_uart_0.v(327) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_jtag_uart_0.v Line: 327
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_jtag_uart_0.v
+Error (10228): Verilog HDL error at processor_leds.v(21): module "processor_leds" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_leds.v Line: 21
+Info (10499): HDL info at processor_leds.v(21): see declaration for object "processor_leds"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_leds.v
+Error (10228): Verilog HDL error at processor_mm_interconnect_0.v(9): module "processor_mm_interconnect_0" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0.v Line: 9
+Info (10499): HDL info at processor_mm_interconnect_0.v(9): see declaration for object "processor_mm_interconnect_0"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_mm_interconnect_0.v
+Error (10228): Verilog HDL error at processor_mm_interconnect_0_addr_router.sv(45): module "processor_mm_interconnect_0_addr_router_default_decode" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0_addr_router.sv Line: 45
+Info (10499): HDL info at processor_mm_interconnect_0_addr_router.sv(45): see declaration for object "processor_mm_interconnect_0_addr_router_default_decode"
+Error (10112): Ignored design unit "processor_mm_interconnect_0_addr_router" at processor_mm_interconnect_0_addr_router.sv(86) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0_addr_router.sv Line: 86
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_mm_interconnect_0_addr_router.sv
+Error (10228): Verilog HDL error at processor_mm_interconnect_0_cmd_xbar_demux.sv(43): module "processor_mm_interconnect_0_cmd_xbar_demux" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0_cmd_xbar_demux.sv Line: 43
+Info (10499): HDL info at processor_mm_interconnect_0_cmd_xbar_demux.sv(43): see declaration for object "processor_mm_interconnect_0_cmd_xbar_demux"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_mm_interconnect_0_cmd_xbar_demux.sv
+Error (10228): Verilog HDL error at processor_mm_interconnect_0_cmd_xbar_mux.sv(38): module "processor_mm_interconnect_0_cmd_xbar_mux" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0_cmd_xbar_mux.sv Line: 38
+Info (10499): HDL info at processor_mm_interconnect_0_cmd_xbar_mux.sv(38): see declaration for object "processor_mm_interconnect_0_cmd_xbar_mux"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_mm_interconnect_0_cmd_xbar_mux.sv
+Error (10228): Verilog HDL error at processor_mm_interconnect_0_id_router.sv(45): module "processor_mm_interconnect_0_id_router_default_decode" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0_id_router.sv Line: 45
+Info (10499): HDL info at processor_mm_interconnect_0_id_router.sv(45): see declaration for object "processor_mm_interconnect_0_id_router_default_decode"
+Error (10112): Ignored design unit "processor_mm_interconnect_0_id_router" at processor_mm_interconnect_0_id_router.sv(86) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0_id_router.sv Line: 86
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_mm_interconnect_0_id_router.sv
+Error (10228): Verilog HDL error at processor_mm_interconnect_0_rsp_xbar_demux.sv(43): module "processor_mm_interconnect_0_rsp_xbar_demux" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0_rsp_xbar_demux.sv Line: 43
+Info (10499): HDL info at processor_mm_interconnect_0_rsp_xbar_demux.sv(43): see declaration for object "processor_mm_interconnect_0_rsp_xbar_demux"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_mm_interconnect_0_rsp_xbar_demux.sv
+Error (10228): Verilog HDL error at processor_mm_interconnect_0_rsp_xbar_mux.sv(38): module "processor_mm_interconnect_0_rsp_xbar_mux" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_mm_interconnect_0_rsp_xbar_mux.sv Line: 38
+Info (10499): HDL info at processor_mm_interconnect_0_rsp_xbar_mux.sv(38): see declaration for object "processor_mm_interconnect_0_rsp_xbar_mux"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_mm_interconnect_0_rsp_xbar_mux.sv
+Error (10228): Verilog HDL error at processor_nios2_qsys_0.v(21): module "processor_nios2_qsys_0_register_bank_a_module" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 21
+Info (10499): HDL info at processor_nios2_qsys_0.v(21): see declaration for object "processor_nios2_qsys_0_register_bank_a_module"
+Error (10112): Ignored design unit "processor_nios2_qsys_0_register_bank_b_module" at processor_nios2_qsys_0.v(86) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 86
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_debug" at processor_nios2_qsys_0.v(151) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 151
+Error (10112): Ignored design unit "processor_nios2_qsys_0_ociram_sp_ram_module" at processor_nios2_qsys_0.v(292) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 292
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_ocimem" at processor_nios2_qsys_0.v(355) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 355
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_avalon_reg" at processor_nios2_qsys_0.v(536) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 536
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_break" at processor_nios2_qsys_0.v(628) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 628
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_xbrk" at processor_nios2_qsys_0.v(922) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 922
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_dbrk" at processor_nios2_qsys_0.v(1128) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 1128
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_itrace" at processor_nios2_qsys_0.v(1314) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 1314
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_td_mode" at processor_nios2_qsys_0.v(1637) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 1637
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_dtrace" at processor_nios2_qsys_0.v(1704) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 1704
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_compute_input_tm_cnt" at processor_nios2_qsys_0.v(1798) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 1798
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_fifo_wrptr_inc" at processor_nios2_qsys_0.v(1869) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 1869
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_fifo_cnt_inc" at processor_nios2_qsys_0.v(1911) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 1911
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_fifo" at processor_nios2_qsys_0.v(1957) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 1957
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_pib" at processor_nios2_qsys_0.v(2458) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 2458
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_oci_im" at processor_nios2_qsys_0.v(2526) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 2526
+Error (10112): Ignored design unit "processor_nios2_qsys_0_nios2_performance_monitors" at processor_nios2_qsys_0.v(2642) due to previous errors File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0.v Line: 2642
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_nios2_qsys_0.v
+Error (10228): Verilog HDL error at processor_nios2_qsys_0_jtag_debug_module_sysclk.v(21): module "processor_nios2_qsys_0_jtag_debug_module_sysclk" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0_jtag_debug_module_sysclk.v Line: 21
+Info (10499): HDL info at processor_nios2_qsys_0_jtag_debug_module_sysclk.v(21): see declaration for object "processor_nios2_qsys_0_jtag_debug_module_sysclk"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_nios2_qsys_0_jtag_debug_module_sysclk.v
+Error (10228): Verilog HDL error at processor_nios2_qsys_0_jtag_debug_module_tck.v(21): module "processor_nios2_qsys_0_jtag_debug_module_tck" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0_jtag_debug_module_tck.v Line: 21
+Info (10499): HDL info at processor_nios2_qsys_0_jtag_debug_module_tck.v(21): see declaration for object "processor_nios2_qsys_0_jtag_debug_module_tck"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_nios2_qsys_0_jtag_debug_module_tck.v
+Error (10228): Verilog HDL error at processor_nios2_qsys_0_jtag_debug_module_wrapper.v(21): module "processor_nios2_qsys_0_jtag_debug_module_wrapper" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0_jtag_debug_module_wrapper.v Line: 21
+Info (10499): HDL info at processor_nios2_qsys_0_jtag_debug_module_wrapper.v(21): see declaration for object "processor_nios2_qsys_0_jtag_debug_module_wrapper"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_nios2_qsys_0_jtag_debug_module_wrapper.v
+Error (10228): Verilog HDL error at processor_nios2_qsys_0_oci_test_bench.v(21): module "processor_nios2_qsys_0_oci_test_bench" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0_oci_test_bench.v Line: 21
+Info (10499): HDL info at processor_nios2_qsys_0_oci_test_bench.v(21): see declaration for object "processor_nios2_qsys_0_oci_test_bench"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_nios2_qsys_0_oci_test_bench.v
+Error (10228): Verilog HDL error at processor_nios2_qsys_0_test_bench.v(21): module "processor_nios2_qsys_0_test_bench" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_nios2_qsys_0_test_bench.v Line: 21
+Info (10499): HDL info at processor_nios2_qsys_0_test_bench.v(21): see declaration for object "processor_nios2_qsys_0_test_bench"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_nios2_qsys_0_test_bench.v
+Error (10228): Verilog HDL error at processor_onchip_memory2_0.v(21): module "processor_onchip_memory2_0" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_onchip_memory2_0.v Line: 21
+Info (10499): HDL info at processor_onchip_memory2_0.v(21): see declaration for object "processor_onchip_memory2_0"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_onchip_memory2_0.v
+Error (10228): Verilog HDL error at processor_switches.v(21): module "processor_switches" cannot be declared more than once File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/db/ip/processor/submodules/processor_switches.v Line: 21
+Info (10499): HDL info at processor_switches.v(21): see declaration for object "processor_switches"
+Info (12021): Found 0 design units, including 0 entities, in source file db/ip/processor/submodules/processor_switches.v
+Info (144001): Generated suppressed messages file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/output_files/Mapeada.map.smsg
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 52 errors, 1 warning
+    Error: Peak virtual memory: 605 megabytes
+    Error: Processing ended: Wed Jul  4 18:18:22 2018
+    Error: Elapsed time: 00:00:50
+    Error: Total CPU time (on all processors): 00:01:16
+
+
++------------------------------------------+
+; Analysis & Synthesis Suppressed Messages ;
++------------------------------------------+
+The suppressed messages can be found in /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada 2/output_files/Mapeada.map.smsg.
+
+

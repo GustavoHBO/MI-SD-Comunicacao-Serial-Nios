@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Tue Jul 03 22:50:26 2018
-Quartus II 32-bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition
+Analysis & Synthesis Status : Successful - Wed Jul  4 19:53:48 2018
+Quartus II 64-Bit Version : 13.1.0 Build 162 10/23/2013 SJ Web Edition
 Revision Name : NovoQuartus
 Top-level Entity Name : NovoQuartus
 Family : Cyclone IV E
-Total logic elements : 1,850
-    Total combinational functions : 1,628
-    Dedicated logic registers : 992
-Total registers : 992
-Total pins : 12
+Total logic elements : 1,801
+    Total combinational functions : 1,596
+    Dedicated logic registers : 967
+Total registers : 967
+Total pins : 18
 Total virtual pins : 0
 Total memory bits : 44,032
 Embedded Multiplier 9-bit elements : 0

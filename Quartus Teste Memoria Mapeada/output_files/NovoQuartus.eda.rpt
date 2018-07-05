@@ -1,6 +1,6 @@
 EDA Netlist Writer report for NovoQuartus
-Tue Jul 03 22:51:14 2018
-Quartus II 32-bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+Wed Jul  4 19:54:51 2018
+Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
 ---------------------
@@ -36,7 +36,7 @@ applicable agreement for further details.
 +-------------------------------------------------------------------+
 ; EDA Netlist Writer Summary                                        ;
 +---------------------------+---------------------------------------+
-; EDA Netlist Writer Status ; Successful - Tue Jul 03 22:51:14 2018 ;
+; EDA Netlist Writer Status ; Successful - Wed Jul  4 19:54:51 2018 ;
 ; Revision Name             ; NovoQuartus                           ;
 ; Top-level Entity Name     ; NovoQuartus                           ;
 ; Family                    ; Cyclone IV E                          ;
@@ -66,42 +66,42 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------------------------+------------------------+
 
 
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Simulation Generated Files                                                                                                                  ;
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Generated Files                                                                                                                             ;
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/NovoQuartus_8_1200mv_85c_slow.vho      ;
-; Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/NovoQuartus_8_1200mv_0c_slow.vho       ;
-; Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/NovoQuartus_min_1200mv_0c_fast.vho     ;
-; Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/NovoQuartus.vho                        ;
-; Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/NovoQuartus_8_1200mv_85c_vhd_slow.sdo  ;
-; Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/NovoQuartus_8_1200mv_0c_vhd_slow.sdo   ;
-; Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/NovoQuartus_min_1200mv_0c_vhd_fast.sdo ;
-; Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/NovoQuartus_vhd.sdo                    ;
-+---------------------------------------------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Simulation Generated Files                                                                                                                                    ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Generated Files                                                                                                                                               ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/NovoQuartus_8_1200mv_85c_slow.vho      ;
+; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/NovoQuartus_8_1200mv_0c_slow.vho       ;
+; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/NovoQuartus_min_1200mv_0c_fast.vho     ;
+; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/NovoQuartus.vho                        ;
+; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/NovoQuartus_8_1200mv_85c_vhd_slow.sdo  ;
+; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/NovoQuartus_8_1200mv_0c_vhd_slow.sdo   ;
+; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/NovoQuartus_min_1200mv_0c_vhd_fast.sdo ;
+; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/NovoQuartus_vhd.sdo                    ;
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 
 +-----------------------------+
 ; EDA Netlist Writer Messages ;
 +-----------------------------+
 Info: *******************************************************************
-Info: Running Quartus II 32-bit EDA Netlist Writer
-    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Jul 03 22:51:07 2018
+Info: Running Quartus II 64-Bit EDA Netlist Writer
+    Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
+    Info: Processing started: Wed Jul  4 19:54:45 2018
 Info: Command: quartus_eda --read_settings_files=off --write_settings_files=off NovoQuartus -c NovoQuartus
-Info (204019): Generated file NovoQuartus_8_1200mv_85c_slow.vho in folder "Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file NovoQuartus_8_1200mv_0c_slow.vho in folder "Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file NovoQuartus_min_1200mv_0c_fast.vho in folder "Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file NovoQuartus.vho in folder "Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file NovoQuartus_8_1200mv_85c_vhd_slow.sdo in folder "Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file NovoQuartus_8_1200mv_0c_vhd_slow.sdo in folder "Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file NovoQuartus_min_1200mv_0c_vhd_fast.sdo in folder "Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/" for EDA simulation tool
-Info (204019): Generated file NovoQuartus_vhd.sdo in folder "Y:/Documents/GitHub/MI-SD-Linguagem-de-Maquina-e-Microarquitetura/ProjetoQuartus/simulation/modelsim/" for EDA simulation tool
-Info: Quartus II 32-bit EDA Netlist Writer was successful. 0 errors, 0 warnings
-    Info: Peak virtual memory: 314 megabytes
-    Info: Processing ended: Tue Jul 03 22:51:14 2018
-    Info: Elapsed time: 00:00:07
-    Info: Total CPU time (on all processors): 00:00:05
+Info (204019): Generated file NovoQuartus_8_1200mv_85c_slow.vho in folder "/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file NovoQuartus_8_1200mv_0c_slow.vho in folder "/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file NovoQuartus_min_1200mv_0c_fast.vho in folder "/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file NovoQuartus.vho in folder "/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file NovoQuartus_8_1200mv_85c_vhd_slow.sdo in folder "/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file NovoQuartus_8_1200mv_0c_vhd_slow.sdo in folder "/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file NovoQuartus_min_1200mv_0c_vhd_fast.sdo in folder "/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/" for EDA simulation tool
+Info (204019): Generated file NovoQuartus_vhd.sdo in folder "/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/Quartus Teste Memoria Mapeada/simulation/modelsim/" for EDA simulation tool
+Info: Quartus II 64-Bit EDA Netlist Writer was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 879 megabytes
+    Info: Processing ended: Wed Jul  4 19:54:51 2018
+    Info: Elapsed time: 00:00:06
+    Info: Total CPU time (on all processors): 00:00:06
 
 

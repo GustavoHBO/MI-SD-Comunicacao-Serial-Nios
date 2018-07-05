@@ -41,12 +41,11 @@ set_global_assignment -name DEVICE EP4CE10F17C8
 set_global_assignment -name TOP_LEVEL_ENTITY NovoQuartus
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "21:33:17  APRIL 30, 2018"
-set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name LAST_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name ERROR_CHECK_FREQUENCY_DIVISOR 1
-set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
 set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim-Altera (VHDL)"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT VHDL -section_id eda_simulation
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
@@ -56,11 +55,38 @@ set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_RO
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_location_assignment PIN_E16 -to clk
-set_location_assignment PIN_B7 -to led[0]
-set_location_assignment PIN_B10 -to led[1]
-set_location_assignment PIN_C11 -to led[2]
-set_location_assignment PIN_D12 -to led[3]
-set_location_assignment PIN_D1 -to botao
+set_location_assignment PIN_F15 -to en
+set_location_assignment PIN_F16 -to rw
+set_location_assignment PIN_G16 -to rs
+set_location_assignment PIN_L10 -to dat[0]
+set_location_assignment PIN_M10 -to dat[1]
+set_location_assignment PIN_M11 -to dat[2]
+set_location_assignment PIN_N13 -to dat[3]
+set_location_assignment PIN_P14 -to dat[4]
+set_location_assignment PIN_N14 -to dat[5]
+set_location_assignment PIN_L13 -to dat[6]
+set_location_assignment PIN_M12 -to dat[7]
+set_location_assignment PIN_L12 -to LCD_P
+set_location_assignment PIN_L14 -to LCD_N
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_NCE_PIN OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
+set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
+set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
+set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
+set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name CYCLONEII_RESERVE_NCEO_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
+set_location_assignment PIN_B7 -to led[3]
+set_location_assignment PIN_B10 -to led[2]
+set_location_assignment PIN_C11 -to led[1]
+set_location_assignment PIN_D12 -to led[0]
+set_global_assignment -name VERILOG_FILE LCD1602.v
 set_global_assignment -name SYSTEMVERILOG_FILE processador/synthesis/submodules/processador_rsp_xbar_mux_001.sv
 set_global_assignment -name SYSTEMVERILOG_FILE processador/synthesis/submodules/processador_rsp_xbar_mux.sv
 set_global_assignment -name SYSTEMVERILOG_FILE processador/synthesis/submodules/processador_rsp_xbar_demux_004.sv
@@ -118,5 +144,4 @@ set_global_assignment -name VERILOG_FILE processador/synthesis/processador.v
 set_global_assignment -name QSYS_FILE processador.qsys
 set_global_assignment -name SOURCE_FILE processador.cmp
 set_global_assignment -name VERILOG_FILE NovoQuartus.v
-set_global_assignment -name VERILOG_FILE LCD1602.v
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
