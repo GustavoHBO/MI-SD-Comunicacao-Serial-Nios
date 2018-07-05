@@ -1,11 +1,16 @@
 |UART
-button => ~NO_FANOUT~
+button => _.IN1
 clk => clk.IN2
 reset => _.IN1
 reset => _.IN1
 reset => _.IN1
+reset => _.IN1
 rx => rx.IN1
-tx <= rx.DB_MAX_OUTPUT_PORT_TYPE
+tx << uart_tx:uart_tx.tx
+led[0] << data[0].DB_MAX_OUTPUT_PORT_TYPE
+led[1] << data[1].DB_MAX_OUTPUT_PORT_TYPE
+led[2] << data[2].DB_MAX_OUTPUT_PORT_TYPE
+led[3] << data[3].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |UART|clk_divider:clk_divider
@@ -196,5 +201,62 @@ data[5] <= data[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 data[6] <= data[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 data[7] <= data[7]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 ready <= ready~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|UART|uart_tx:uart_tx
+data[0] => ~NO_FANOUT~
+data[1] => ~NO_FANOUT~
+data[2] => ~NO_FANOUT~
+data[3] => ~NO_FANOUT~
+data[4] => ~NO_FANOUT~
+data[5] => ~NO_FANOUT~
+data[6] => ~NO_FANOUT~
+data[7] => ~NO_FANOUT~
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+reset => state.OUTPUTSELECT
+reset => tx.OUTPUTSELECT
+reset => counter[0].ENA
+reset => counter[1].ENA
+reset => counter[2].ENA
+reset => counter[3].ENA
+reset => dataA[0].ENA
+reset => dataA[1].ENA
+reset => dataA[2].ENA
+reset => dataA[3].ENA
+reset => dataA[4].ENA
+reset => dataA[5].ENA
+reset => dataA[6].ENA
+reset => dataA[7].ENA
+clk => counter[0].CLK
+clk => counter[1].CLK
+clk => counter[2].CLK
+clk => counter[3].CLK
+clk => dataA[0].CLK
+clk => dataA[1].CLK
+clk => dataA[2].CLK
+clk => dataA[3].CLK
+clk => dataA[4].CLK
+clk => dataA[5].CLK
+clk => dataA[6].CLK
+clk => dataA[7].CLK
+clk => tx~reg0.CLK
+clk => state~1.DATAIN
+ready => dataA.OUTPUTSELECT
+ready => dataA.OUTPUTSELECT
+ready => dataA.OUTPUTSELECT
+ready => dataA.OUTPUTSELECT
+ready => dataA.OUTPUTSELECT
+ready => dataA.OUTPUTSELECT
+ready => dataA.OUTPUTSELECT
+ready => dataA.OUTPUTSELECT
+ready => counter.OUTPUTSELECT
+ready => counter.OUTPUTSELECT
+ready => counter.OUTPUTSELECT
+ready => counter.OUTPUTSELECT
+ready => Selector2.IN2
+ready => Selector0.IN1
+ready => Selector1.IN2
+tx <= tx~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 

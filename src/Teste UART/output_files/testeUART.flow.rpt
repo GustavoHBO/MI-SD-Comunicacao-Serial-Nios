@@ -1,5 +1,5 @@
 Flow report for testeUART
-Wed Jul  4 23:27:57 2018
+Thu Jul  5 02:29:25 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -40,18 +40,18 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Flow Summary                                                                    ;
 +------------------------------------+--------------------------------------------+
-; Flow Status                        ; Successful - Wed Jul  4 23:27:57 2018      ;
+; Flow Status                        ; Successful - Thu Jul  5 02:29:25 2018      ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; testeUART                                  ;
 ; Top-level Entity Name              ; UART                                       ;
 ; Family                             ; Cyclone IV E                               ;
 ; Device                             ; EP4CE10F17C8                               ;
 ; Timing Models                      ; Final                                      ;
-; Total logic elements               ; 0 / 10,320 ( 0 % )                         ;
-;     Total combinational functions  ; 0 / 10,320 ( 0 % )                         ;
-;     Dedicated logic registers      ; 0 / 10,320 ( 0 % )                         ;
-; Total registers                    ; 0                                          ;
-; Total pins                         ; 5 / 180 ( 3 % )                            ;
+; Total logic elements               ; 58 / 10,320 ( < 1 % )                      ;
+;     Total combinational functions  ; 56 / 10,320 ( < 1 % )                      ;
+;     Dedicated logic registers      ; 37 / 10,320 ( < 1 % )                      ;
+; Total registers                    ; 37                                         ;
+; Total pins                         ; 9 / 180 ( 5 % )                            ;
 ; Total virtual pins                 ; 0                                          ;
 ; Total memory bits                  ; 0 / 423,936 ( 0 % )                        ;
 ; Embedded Multiplier 9-bit elements ; 0 / 46 ( 0 % )                             ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 07/04/2018 23:27:16 ;
+; Start date & time ; 07/05/2018 02:28:21 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; testeUART           ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+---------------------------+---------------+-------------+----------------+
 ; Assignment Name                     ; Value                     ; Default Value ; Entity Name ; Section Id     ;
 +-------------------------------------+---------------------------+---------------+-------------+----------------+
-; COMPILER_SIGNATURE_ID               ; 0.153075763631230         ; --            ; --          ; --             ;
+; COMPILER_SIGNATURE_ID               ; 0.153076850109089         ; --            ; --          ; --             ;
 ; EDA_OUTPUT_DATA_FORMAT              ; Verilog Hdl               ; --            ; --          ; eda_simulation ;
 ; EDA_SIMULATION_TOOL                 ; ModelSim-Altera (Verilog) ; <None>        ; --          ; --             ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                        ; --            ; --          ; --             ;
@@ -94,12 +94,12 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 603 MB              ; 00:00:03                           ;
-; Fitter                    ; 00:00:12     ; 1.0                     ; 829 MB              ; 00:00:11                           ;
-; Assembler                 ; 00:00:02     ; 1.0                     ; 599 MB              ; 00:00:02                           ;
-; TimeQuest Timing Analyzer ; 00:00:03     ; 1.0                     ; 601 MB              ; 00:00:04                           ;
-; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 826 MB              ; 00:00:01                           ;
-; Total                     ; 00:00:21     ; --                      ; --                  ; 00:00:21                           ;
+; Analysis & Synthesis      ; 00:00:04     ; 1.0                     ; 603 MB              ; 00:00:03                           ;
+; Fitter                    ; 00:00:21     ; 1.0                     ; 819 MB              ; 00:00:16                           ;
+; Assembler                 ; 00:00:03     ; 1.0                     ; 599 MB              ; 00:00:03                           ;
+; TimeQuest Timing Analyzer ; 00:00:05     ; 1.0                     ; 616 MB              ; 00:00:04                           ;
+; EDA Netlist Writer        ; 00:00:02     ; 1.0                     ; 826 MB              ; 00:00:02                           ;
+; Total                     ; 00:00:35     ; --                      ; --                  ; 00:00:28                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

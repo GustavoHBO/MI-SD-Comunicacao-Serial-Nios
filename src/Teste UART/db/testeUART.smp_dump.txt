@@ -1,4 +1,10 @@
 
+State Machine - |UART|uart_tx:uart_tx|state
+Name state.sending state.done state.idle 
+state.idle 0 0 0 
+state.sending 1 0 1 
+state.done 0 1 1 
+
 State Machine - |UART|uart_rx:uart_rx|state
 Name state.receving state.done state.idle 
 state.idle 0 0 0 
