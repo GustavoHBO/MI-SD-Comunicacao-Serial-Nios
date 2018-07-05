@@ -1,4 +1,4 @@
-module UART(button, clk, reset, rx, tx);
+module UART(button, clk, reset, rx, tx, led);
 	
 	input button;
 	input clk;
@@ -6,6 +6,7 @@ module UART(button, clk, reset, rx, tx);
 	input rx;
 	
 	output tx;
+	output [3:0] led;
 	
 	wire clk_speed;
 	wire [7:0] data;
@@ -15,7 +16,7 @@ module UART(button, clk, reset, rx, tx);
 	wire pulse_clk_divider;
 	
 	assign led = ~data[3:0];
-	assign tx = rx;
+	//assign tx = rx;
 	
 	clk_divider clk_divider (
 		.clk_in(clk),
@@ -41,6 +42,12 @@ module UART(button, clk, reset, rx, tx);
 		.ready(ready)
 		);
 	
-	
+	uart_tx uart_tx(
+		.data(data), 
+		.reset(~reset), 
+		.clk(clk_speed), 
+		.ready(ready), 
+		.tx(tx)
+		);
 	
 endmodule
