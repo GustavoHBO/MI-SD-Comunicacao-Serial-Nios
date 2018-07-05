@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable>
+  <columns>
+   <connections preferredWidth="127" />
+   <irq preferredWidth="34" />
+  </columns>
+ </systemtable>
+ <clocktable>
+  <columns>
+   <clockname preferredWidth="166" />
+   <clocksource preferredWidth="166" />
+   <frequency preferredWidth="146" />
+  </columns>
+ </clocktable>
+ <window width="1197" height="764" x="0" y="14" />
+ <library
+   expandedCategories="Library/Peripherals,Library,Project,Library/Peripherals/Microcontroller Peripherals" />
+ <hdlexample language="VERILOG" />
+ <generation
+   path="/home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/_PROJECT_NAME_" />
+</preferences>

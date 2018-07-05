@@ -8,7 +8,8 @@ module control_uart(
 				dataOut,
 				pulse,
 				packet,
-				pulse_packet
+				pulse_packet,
+				pulse_configure
 );
 
 	input clk;
@@ -20,6 +21,7 @@ module control_uart(
 	
 	output [7:0] dataOut;
 	output reg pulse;
+	output reg pulse_configure;
 	output reg [31:0] packet;
 	output reg pulse_packet;
 
@@ -35,6 +37,7 @@ module control_uart(
 		if (rst) begin
 			pulse = 1'b0;
 			count_packet <= 3'b000;
+			pulse_configure <= 1'b0;
 			state <= reset;
 		end else begin
 			case (state)
@@ -56,6 +59,7 @@ module control_uart(
 					if(dataCache[5:4] == 2'b10) state <= idle;
 					else begin
 						configuration <= dataCache;
+						pulse_configure <= 1'b1;
 						state <= done;
 					end
 				end
@@ -86,6 +90,7 @@ module control_uart(
 				end
 				done:begin
 					pulse_packet <= 1'b0;
+					pulse_configure <= 1'b0;
 					pulse = 1'b1;
 					state <= idle;
 				end

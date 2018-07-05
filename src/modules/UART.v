@@ -23,6 +23,7 @@ module UART(button, clk, reset, rx, tx, led, data_packet, rs, rw, en,dat,LCD_N,L
 	
 	wire [1:0] speed_clk_divider;
 	wire pulse_configuration;
+	wire [7:0] mode_configurate;
 	
 	reg [1:0] modo;
 	
@@ -35,19 +36,20 @@ module UART(button, clk, reset, rx, tx, led, data_packet, rs, rw, en,dat,LCD_N,L
 		.clk_in(clk),
 		.rst(~reset),
 		.clk_out(clk_speed),
-		.pulse(pulse_configuration),
-		.speed(configuration[7:6])
+		.pulse(pulse_configure),
+		.speed(configuration[5:4])
 	);
 	
 	 control_uart control_uart(
 	 	.clk(clk),
 	 	.dataReady(),
 	 	.rst(~reset),
-	 	.dataIn(8'b00001100),
+	 	.dataIn(mode_configurate),
 	 	.dataOut(configuration),
 		.pulse(pulse_configuration),
-		.dataReady(1'b0),
-		.packet(data_packet_wire)
+		.dataReady(~button),
+		.packet(data_packet_wire),
+		.pulse_configure(pulse_configure)
 	 );
 
 	uart_rx uart_rx (
@@ -79,5 +81,13 @@ module UART(button, clk, reset, rx, tx, led, data_packet, rs, rw, en,dat,LCD_N,L
 		 .LCD_N(LCD_N),
 		 .LCD_P(LCD_P)
 		 ); 
-	
+		 
+	processor processor (
+        .clk_clk         (clk),         //      clk.clk
+        .reset_reset_n   (1'b1),   //    reset.reset_n
+        .switches_export (), // switches.export
+        .leds_export     (),     //     leds.export
+        .modo_lcd_export (),  // modo_lcd.export
+		  .modo_serial_export (mode_configurate)
+	);
 endmodule

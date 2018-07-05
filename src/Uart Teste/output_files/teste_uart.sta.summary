@@ -2,112 +2,64 @@
 TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
-Type  : Slow 1200mV 85C Model Setup 'clk'
-Slack : -4.480
-TNS   : -57.673
-
-Type  : Slow 1200mV 85C Model Setup 'clk_divider:clk_divider|clk_out'
-Slack : -1.959
-TNS   : -55.830
-
-Type  : Slow 1200mV 85C Model Setup 'LCD1602:LCD1602|clkr'
-Slack : -1.077
-TNS   : -9.270
-
-Type  : Slow 1200mV 85C Model Hold 'clk'
-Slack : -0.085
-TNS   : -0.085
-
-Type  : Slow 1200mV 85C Model Hold 'clk_divider:clk_divider|clk_out'
-Slack : 0.453
+Type  : Slow 1200mV 85C Model Setup 'altera_reserved_tck'
+Slack : 46.209
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Hold 'LCD1602:LCD1602|clkr'
-Slack : 0.509
+Type  : Slow 1200mV 85C Model Hold 'altera_reserved_tck'
+Slack : 0.452
 TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
-Slack : -3.000
-TNS   : -49.097
+Type  : Slow 1200mV 85C Model Recovery 'altera_reserved_tck'
+Slack : 47.167
+TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk_divider:clk_divider|clk_out'
-Slack : -1.487
-TNS   : -59.480
+Type  : Slow 1200mV 85C Model Removal 'altera_reserved_tck'
+Slack : 1.413
+TNS   : 0.000
 
-Type  : Slow 1200mV 85C Model Minimum Pulse Width 'LCD1602:LCD1602|clkr'
-Slack : -1.487
-TNS   : -35.688
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 49.531
+TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Setup 'clk'
-Slack : -4.097
-TNS   : -49.605
+Type  : Slow 1200mV 0C Model Setup 'altera_reserved_tck'
+Slack : 46.526
+TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Setup 'clk_divider:clk_divider|clk_out'
-Slack : -1.790
-TNS   : -48.883
-
-Type  : Slow 1200mV 0C Model Setup 'LCD1602:LCD1602|clkr'
-Slack : -0.919
-TNS   : -6.909
-
-Type  : Slow 1200mV 0C Model Hold 'clk'
-Slack : -0.060
-TNS   : -0.060
-
-Type  : Slow 1200mV 0C Model Hold 'clk_divider:clk_divider|clk_out'
+Type  : Slow 1200mV 0C Model Hold 'altera_reserved_tck'
 Slack : 0.401
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Hold 'LCD1602:LCD1602|clkr'
-Slack : 0.480
+Type  : Slow 1200mV 0C Model Recovery 'altera_reserved_tck'
+Slack : 47.468
 TNS   : 0.000
 
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
-Slack : -3.000
-TNS   : -49.097
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk_divider:clk_divider|clk_out'
-Slack : -1.487
-TNS   : -59.480
-
-Type  : Slow 1200mV 0C Model Minimum Pulse Width 'LCD1602:LCD1602|clkr'
-Slack : -1.487
-TNS   : -35.688
-
-Type  : Fast 1200mV 0C Model Setup 'clk'
-Slack : -1.303
-TNS   : -8.719
-
-Type  : Fast 1200mV 0C Model Setup 'clk_divider:clk_divider|clk_out'
-Slack : -0.268
-TNS   : -3.160
-
-Type  : Fast 1200mV 0C Model Setup 'LCD1602:LCD1602|clkr'
-Slack : 0.090
+Type  : Slow 1200mV 0C Model Removal 'altera_reserved_tck'
+Slack : 1.271
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'clk'
-Slack : -0.228
-TNS   : -0.313
-
-Type  : Fast 1200mV 0C Model Hold 'clk_divider:clk_divider|clk_out'
-Slack : 0.186
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 49.413
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Hold 'LCD1602:LCD1602|clkr'
-Slack : 0.198
+Type  : Fast 1200mV 0C Model Setup 'altera_reserved_tck'
+Slack : 48.536
 TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
-Slack : -3.000
-TNS   : -36.040
+Type  : Fast 1200mV 0C Model Hold 'altera_reserved_tck'
+Slack : 0.183
+TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk_divider:clk_divider|clk_out'
-Slack : -1.000
-TNS   : -40.000
+Type  : Fast 1200mV 0C Model Recovery 'altera_reserved_tck'
+Slack : 48.917
+TNS   : 0.000
 
-Type  : Fast 1200mV 0C Model Minimum Pulse Width 'LCD1602:LCD1602|clkr'
-Slack : -1.000
-TNS   : -24.000
+Type  : Fast 1200mV 0C Model Removal 'altera_reserved_tck'
+Slack : 0.578
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'altera_reserved_tck'
+Slack : 49.468
+TNS   : 0.000
 
 ------------------------------------------------------------
