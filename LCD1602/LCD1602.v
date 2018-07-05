@@ -6,7 +6,7 @@ input clk;
  output [7:0] dat; 
  output  rs,rw,en,LCD_N,LCD_P;
  //tri en;
- reg [31:0] hex;
+ reg [63:0] hex;
  reg e; 
  reg [7:0] dat; 
  reg rs;   
@@ -41,30 +41,30 @@ initial crc = 32'b10101011110011011110111110101011;     //‭‭‭1010101111001
  assign LCD_N=0;
   assign LCD_P=1;
   
-integer contador = 31;
+integer contador = 63;
 integer index;
 
 always @* begin
 for(index = 0; index < 8; index = index+1) begin
-	case(crc[contador-:3])
-		4'b0000: hex[contador-:3] <= set0; //0
-		4'b0001: hex[contador-:3] <= set1; //1
-		4'b0010: hex[contador-:3] <= set2; //2
-		4'b0011: hex[contador-:3] <= set3; //3
-		4'b0100: hex[contador-:3] <= dat0; //4
-		4'b0101: hex[contador-:3] <= dat1; //5
-		4'b0110: hex[contador-:3] <= dat2; //6
-		4'b0111: hex[contador-:3] <= dat3; //7
-		4'b1000: hex[contador-:3] <= dat4; //8
-		4'b1001: hex[contador-:3] <= dat5; //9
-		4'b1010: hex[contador-:3] <= dat6; //A
-		4'b1011: hex[contador-:3] <= dat7; //B
-		4'b1100: hex[contador-:3] <= dat8; //C
-		4'b1101: hex[contador-:3] <= dat9; //D
-		4'b1110: hex[contador-:3] <= dat10; //E
-		4'b1111: hex[contador-:3] <= nul; //F
+	case(crc[contador-:7])
+		4'b0000: hex[contador-:7] <= 8'd30; //0
+		4'b0001: hex[contador-:7] <= 8'd31; //1
+		4'b0010: hex[contador-:7] <= 8'd32; //2
+		4'b0011: hex[contador-:7] <= 8'd33; //3
+		4'b0100: hex[contador-:7] <= 8'd34; //4
+		4'b0101: hex[contador-:7] <= 8'd35; //5
+		4'b0110: hex[contador-:7] <= 8'd36; //6
+		4'b0111: hex[contador-:7] <= 8'd37; //7
+		4'b1000: hex[contador-:7] <= 8'd38; //8
+		4'b1001: hex[contador-:7] <= 8'd39; //9
+		4'b1010: hex[contador-:7] <= 8'd65; //A
+		4'b1011: hex[contador-:7] <= 8'd66; //B
+		4'b1100: hex[contador-:7] <= 8'd67; //C
+		4'b1101: hex[contador-:7] <= 8'd68; //D
+		4'b1110: hex[contador-:7] <= 8'd69; //E
+		4'b1111: hex[contador-:7] <= 8'd70; //F
 	endcase
-	contador = contador - 4;
+	contador = contador - 8;
 end
 end
 
@@ -89,14 +89,14 @@ begin
 
     dat0:   begin  rs<=1; dat<="C"; next<=dat1; end 
     dat1:   begin  rs<=1; dat<=" "; next<=dat2; end 
-    dat2:   begin  rs<=1; dat<=hex[31:28]; next<=dat3; end 
-    dat3:   begin  rs<=1; dat<=hex[27:24]; next<=dat4; end 
-    dat4:   begin  rs<=1; dat<=hex[23:20]; next<=dat5; end 
-    dat5:   begin  rs<=1; dat<=hex[19:16]; next<=dat6; end 
-    dat6:   begin  rs<=1; dat<=hex[15:12]; next<=dat7; end 
-    dat7:   begin  rs<=1; dat<=hex[11:8]; next<=dat8; end 
-    dat8:   begin  rs<=1; dat<=hex[7:4]; next<=dat9; end 
-    dat9:   begin  rs<=1; dat<=hex[3:0]; next<=dat10; end 
+    dat2:   begin  rs<=1; dat<=hex[63:56]; next<=dat3; end 
+    dat3:   begin  rs<=1; dat<=hex[55:48]; next<=dat4; end 
+    dat4:   begin  rs<=1; dat<=hex[47:40]; next<=dat5; end 
+    dat5:   begin  rs<=1; dat<=hex[39:32]; next<=dat6; end 
+    dat6:   begin  rs<=1; dat<=hex[31:24]; next<=dat7; end 
+    dat7:   begin  rs<=1; dat<=hex[23:16]; next<=dat8; end 
+    dat8:   begin  rs<=1; dat<=hex[15:8]; next<=dat9; end 
+    dat9:   begin  rs<=1; dat<=hex[7:0]; next<=dat10; end 
     dat10:   begin  rs<=1; dat<=" "; next<=dat11; end 
     dat11:   begin  rs<=1; dat<=" "; next<=nul; end 
     
@@ -114,14 +114,14 @@ begin
 
 		 dat0:   begin  rs<=1; dat<="E"; next<=dat1; end 
 		 dat1:   begin  rs<=1; dat<=" "; next<=dat2; end 
-		 dat2:   begin  rs<=1; dat<=hex[31:28]; next<=dat3; end 
-		 dat3:   begin  rs<=1; dat<=hex[27:24]; next<=dat4; end 
-		 dat4:   begin  rs<=1; dat<=hex[23:20]; next<=dat5; end 
-		 dat5:   begin  rs<=1; dat<=hex[19:16]; next<=dat6; end 
-		 dat6:   begin  rs<=1; dat<=hex[15:12]; next<=dat7; end 
-		 dat7:   begin  rs<=1; dat<=hex[11:8]; next<=dat8; end 
-		 dat8:   begin  rs<=1; dat<=hex[7:4]; next<=dat9; end 
-		 dat9:   begin  rs<=1; dat<=hex[3:0]; next<=dat10; end 
+		 dat2:   begin  rs<=1; dat<=hex[63:56]; next<=dat3; end 
+		 dat3:   begin  rs<=1; dat<=hex[55:48]; next<=dat4; end 
+		 dat4:   begin  rs<=1; dat<=hex[47:40]; next<=dat5; end 
+		 dat5:   begin  rs<=1; dat<=hex[39:32]; next<=dat6; end 
+		 dat6:   begin  rs<=1; dat<=hex[31:24]; next<=dat7; end 
+		 dat7:   begin  rs<=1; dat<=hex[23:16]; next<=dat8; end 
+		 dat8:   begin  rs<=1; dat<=hex[15:8]; next<=dat9; end 
+		 dat9:   begin  rs<=1; dat<=hex[7:0]; next<=dat10; end 
 		 dat10:   begin  rs<=1; dat<=" "; next<=dat11; end 
 		 dat11:   begin  rs<=1; dat<=" "; next<=nul; end 
 			 
