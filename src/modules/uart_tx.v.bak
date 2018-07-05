@@ -1,17 +1,15 @@
-module uart_tx(data, reset, pulse, configuration, clk, ready, tx);
+module uart_tx(data, reset, clk, ready, tx);
 	
 	input clk;
 	input reset;
 	input [7:0] data;
 	input ready;
-	input pulse;
-	input [1:0] configuration;
 	
 	output reg tx;
 	
 	reg [3:0] counter;
 	reg [7:0] dataA;
-	reg [3:0] data_size;
+	
 	reg [1:0] state;
 	
 	localparam idle= 2'b00, sending = 2'b01, done = 2'b11; 
@@ -24,12 +22,6 @@ module uart_tx(data, reset, pulse, configuration, clk, ready, tx);
 				case (state)
 					idle:begin
 						tx <= 1'b1;
-						if(pulse)begin
-							if(configuration == 2'b00) data_size <= 4'd7;
-							if(configuration == 2'b01) data_size <= 4'd6;
-							if(configuration == 2'b11) data_size <= 4'd5;
-							if(configuration == 2'b10) data_size <= 4'd4;
-						end
 						if (ready) begin
 							dataA <= data;
 							state   <= sending;
@@ -40,7 +32,7 @@ module uart_tx(data, reset, pulse, configuration, clk, ready, tx);
 						end
 					end
 					sending:begin
-						if (counter == data_size) begin
+						if (counter == 4'd7) begin
 							tx <= dataA[counter];
 							state <= done;
 						end else begin

@@ -3,8 +3,7 @@ module control_uart(
 				dataReady,
 				rst,
 				dataIn,
-				dataOut,
-				pulse
+				dataOut
 );
 
 	input clk;
@@ -12,7 +11,6 @@ module control_uart(
 	input rst;
 	input [7:0] dataIn;
 	output [7:0] dataOut;
-	output reg pulse;
 
 	reg [7:0] configuration;
 	reg [1:0] state;
@@ -22,7 +20,6 @@ module control_uart(
 
 	always @ (posedge clk) begin
 		if (rst) begin
-			pulse = 1'b0;
 			state <= reset;
 		end else begin
 			case (state)
@@ -31,7 +28,6 @@ module control_uart(
 					state <= idle;
 				end
 				idle:begin
-				pulse = 1'b0;
 					if(dataReady) begin
 						dataCache <= dataIn;
 						state <= configure;
@@ -45,7 +41,6 @@ module control_uart(
 					end
 				end
 				done:begin
-					pulse = 1'b1;
 					state <= idle;
 				end
 			endcase
