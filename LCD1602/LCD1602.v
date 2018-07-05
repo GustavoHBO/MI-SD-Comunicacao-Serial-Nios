@@ -15,7 +15,7 @@ input clk;
  reg clkr; 
  reg [1:0] cnt;
  reg result;
- initial result = 1'b1;
+ initial result = 1'b0;
 //‭ABCD‬EFAB em hexa
 reg[31:0] crc;
 initial crc = 32'b10101011110011011110111110101011;     //‭‭‭10101011110011011110111110101011;
@@ -68,6 +68,7 @@ for(index = 0; index < 8; index = index+1) begin
 	contador = contador + 4;
 	aux = aux + 8;
 end
+result = 1'b1;
 end
 
 always @(posedge clk)      
@@ -79,7 +80,7 @@ end
 
 
 
-always @(posedge clkr) 
+always @(result) 
 begin 
  current=next;
  if(result) begin
