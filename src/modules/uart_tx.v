@@ -40,7 +40,7 @@ module uart_tx(data, reset, pulse, configuration, clk, ready, tx);
 						end
 					end
 					sending:begin
-						if (counter == data_size) begin
+						if (counter == 4'd7) begin
 							tx <= dataA[counter];
 							state <= done;
 						end else begin
