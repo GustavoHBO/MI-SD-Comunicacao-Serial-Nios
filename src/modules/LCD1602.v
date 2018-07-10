@@ -1,6 +1,4 @@
-//www.21eda.com
-//?????LCD1602??????LCD????
-//????????21EDA????????
+// Módulo LCD 1602
 module LCD1602(clk, rs, rw, en,dat,LCD_N,LCD_P, dataIn);  
  input clk;  
  input [7:0] dataIn;
@@ -50,15 +48,15 @@ begin
     set2:   begin  rs<=0; dat<=8'h6; next<=set3; end    
     set3:   begin  rs<=0; dat<=8'h1; next<=dat0; end     
 
-    dat0:   begin  rs<=1; dat<="W"; next<=dat1; end 
-    dat1:   begin  rs<=1; dat<="a"; next<=dat2; end 
-    dat2:   begin  rs<=1; dat<="v"; next<=dat3; end 
-    dat3:   begin  rs<=1; dat<="e"; next<=dat4; end 
-    dat4:   begin  rs<=1; dat<="s"; next<=dat5; end 
-    dat5:   begin  rs<=1; dat<="h"; next<=dat6; end 
-    dat6:   begin  rs<=1; dat<="a"; next<=dat7; end 
-    dat7:   begin  rs<=1; dat<="r"; next<=dat8; end 
-    dat8:   begin  rs<=1; dat<="e"; next<=dat9; end 
+    dat0:   begin  rs<=1; dat<="P"; next<=dat1; end 
+    dat1:   begin  rs<=1; dat<="B"; next<=dat2; end 
+    dat2:   begin  rs<=1; dat<="L"; next<=dat3; end 
+    dat3:   begin  rs<=1; dat<=" "; next<=dat4; end 
+    dat4:   begin  rs<=1; dat<="S"; next<=dat5; end 
+    dat5:   begin  rs<=1; dat<="D"; next<=dat6; end 
+    dat6:   begin  rs<=1; dat<=" "; next<=dat7; end 
+    dat7:   begin  rs<=1; dat<="P"; next<=dat8; end 
+    dat8:   begin  rs<=1; dat<="2"; next<=dat9; end 
     dat9:   begin  rs<=1; dat<=" "; next<=dat10; end 
     dat10:   begin  rs<=1; dat<=" "; next<=dat11; end 
     dat11:   begin  rs<=1; dat<=dataIn; next<=nul; end 
