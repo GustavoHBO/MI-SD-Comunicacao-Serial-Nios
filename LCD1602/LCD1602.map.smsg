@@ -1,2 +1,0 @@
-Warning (10268): Verilog HDL information at lcd1602.v(48): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at lcd1602.v(80): always construct contains both blocking and non-blocking assignments

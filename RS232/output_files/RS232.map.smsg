@@ -1,2 +1,0 @@
-Warning (10268): Verilog HDL information at receiver.v(32): always construct contains both blocking and non-blocking assignments
-Warning (10268): Verilog HDL information at receiver.v(45): always construct contains both blocking and non-blocking assignments

@@ -1,1 +1,0 @@
-module top_level(clk, rs, rw, en, dat, LCD_N, LCD_P);
