@@ -128,4 +128,5 @@ set_global_assignment -name VERILOG_FILE ../modules/clk_divider.v
 set_global_assignment -name VERILOG_FILE ../modules/UART.v
 set_global_assignment -name VERILOG_FILE ../modules/uart_rx.v
 set_global_assignment -name VERILOG_FILE ../modules/uart_tx.v
+set_global_assignment -name SDC_FILE teste_uart.sdc
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,5 +1,5 @@
 Analysis & Synthesis report for testeUART
-Thu Jul  5 02:28:25 2018
+Tue Jul 10 00:18:29 2018
 Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
 
 
@@ -10,22 +10,8 @@ Quartus II 64-Bit Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
   2. Analysis & Synthesis Summary
   3. Analysis & Synthesis Settings
   4. Parallel Compilation
-  5. Analysis & Synthesis Source Files Read
-  6. Analysis & Synthesis Resource Usage Summary
-  7. Analysis & Synthesis Resource Utilization by Entity
-  8. State Machine - |UART|uart_tx:uart_tx|state
-  9. State Machine - |UART|uart_rx:uart_rx|state
- 10. State Machine - |UART|control_uart:control_uart|state
- 11. State Machine - |UART|clk_divider:clk_divider|state
- 12. Registers Removed During Synthesis
- 13. Removed Registers Triggering Further Register Optimizations
- 14. General Register Statistics
- 15. Multiplexer Restructuring Statistics (Restructuring Performed)
- 16. Port Connectivity Checks: "uart_rx:uart_rx"
- 17. Port Connectivity Checks: "control_uart:control_uart"
- 18. Elapsed Time Per Partition
- 19. Analysis & Synthesis Messages
- 20. Analysis & Synthesis Suppressed Messages
+  5. Analysis & Synthesis Messages
+  6. Analysis & Synthesis Suppressed Messages
 
 
 
@@ -51,20 +37,20 @@ applicable agreement for further details.
 +---------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                    ;
 +------------------------------------+--------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Thu Jul  5 02:28:25 2018      ;
+; Analysis & Synthesis Status        ; Failed - Tue Jul 10 00:18:29 2018          ;
 ; Quartus II 64-Bit Version          ; 13.1.0 Build 162 10/23/2013 SJ Web Edition ;
 ; Revision Name                      ; testeUART                                  ;
 ; Top-level Entity Name              ; UART                                       ;
 ; Family                             ; Cyclone IV E                               ;
-; Total logic elements               ; 57                                         ;
-;     Total combinational functions  ; 56                                         ;
-;     Dedicated logic registers      ; 37                                         ;
-; Total registers                    ; 37                                         ;
-; Total pins                         ; 9                                          ;
-; Total virtual pins                 ; 0                                          ;
-; Total memory bits                  ; 0                                          ;
-; Embedded Multiplier 9-bit elements ; 0                                          ;
-; Total PLLs                         ; 0                                          ;
+; Total logic elements               ; N/A until Partition Merge                  ;
+;     Total combinational functions  ; N/A until Partition Merge                  ;
+;     Dedicated logic registers      ; N/A until Partition Merge                  ;
+; Total registers                    ; N/A until Partition Merge                  ;
+; Total pins                         ; N/A until Partition Merge                  ;
+; Total virtual pins                 ; N/A until Partition Merge                  ;
+; Total memory bits                  ; N/A until Partition Merge                  ;
+; Embedded Multiplier 9-bit elements ; N/A until Partition Merge                  ;
+; Total PLLs                         ; N/A until Partition Merge                  ;
 +------------------------------------+--------------------------------------------+
 
 
@@ -166,224 +152,13 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +----------------------------+--------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Source Files Read                                                                                                                                                  ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------+---------+
-; File Name with User-Entered Path ; Used in Netlist ; File Type              ; File Name with Absolute Path                                                                    ; Library ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------+---------+
-; ../modules/uart_tx.v             ; yes             ; User Verilog HDL File  ; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/uart_tx.v      ;         ;
-; ../modules/uart_rx.v             ; yes             ; User Verilog HDL File  ; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/uart_rx.v      ;         ;
-; ../modules/UART.v                ; yes             ; User Verilog HDL File  ; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/UART.v         ;         ;
-; ../modules/control_uart.v        ; yes             ; User Verilog HDL File  ; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/control_uart.v ;         ;
-; ../modules/clk_divider.v         ; yes             ; User Verilog HDL File  ; /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/clk_divider.v  ;         ;
-+----------------------------------+-----------------+------------------------+-------------------------------------------------------------------------------------------------+---------+
-
-
-+-----------------------------------------------------------+
-; Analysis & Synthesis Resource Usage Summary               ;
-+---------------------------------------------+-------------+
-; Resource                                    ; Usage       ;
-+---------------------------------------------+-------------+
-; Estimated Total logic elements              ; 57          ;
-;                                             ;             ;
-; Total combinational functions               ; 56          ;
-; Logic element usage by number of LUT inputs ;             ;
-;     -- 4 input functions                    ; 29          ;
-;     -- 3 input functions                    ; 4           ;
-;     -- <=2 input functions                  ; 23          ;
-;                                             ;             ;
-; Logic elements by mode                      ;             ;
-;     -- normal mode                          ; 45          ;
-;     -- arithmetic mode                      ; 11          ;
-;                                             ;             ;
-; Total registers                             ; 37          ;
-;     -- Dedicated logic registers            ; 37          ;
-;     -- I/O registers                        ; 0           ;
-;                                             ;             ;
-; I/O pins                                    ; 9           ;
-; Embedded Multiplier 9-bit elements          ; 0           ;
-; Maximum fan-out node                        ; reset~input ;
-; Maximum fan-out                             ; 31          ;
-; Total fan-out                               ; 314         ;
-; Average fan-out                             ; 2.83        ;
-+---------------------------------------------+-------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Analysis & Synthesis Resource Utilization by Entity                                                                                                                                     ;
-+------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
-; Compilation Hierarchy Node   ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name           ; Library Name ;
-+------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
-; |UART                        ; 56 (1)            ; 37 (0)       ; 0           ; 0            ; 0       ; 0         ; 9    ; 0            ; |UART                         ; work         ;
-;    |clk_divider:clk_divider| ; 17 (17)           ; 14 (14)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UART|clk_divider:clk_divider ; work         ;
-;    |uart_rx:uart_rx|         ; 24 (24)           ; 15 (15)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UART|uart_rx:uart_rx         ; work         ;
-;    |uart_tx:uart_tx|         ; 14 (14)           ; 8 (8)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |UART|uart_tx:uart_tx         ; work         ;
-+------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+-------------------------------+--------------+
-Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
-
-
-Encoding Type:  One-Hot
-+---------------------------------------------------------+
-; State Machine - |UART|uart_tx:uart_tx|state             ;
-+---------------+---------------+------------+------------+
-; Name          ; state.sending ; state.done ; state.idle ;
-+---------------+---------------+------------+------------+
-; state.idle    ; 0             ; 0          ; 0          ;
-; state.sending ; 1             ; 0          ; 1          ;
-; state.done    ; 0             ; 1          ; 1          ;
-+---------------+---------------+------------+------------+
-
-
-Encoding Type:  One-Hot
-+-----------------------------------------------------------+
-; State Machine - |UART|uart_rx:uart_rx|state               ;
-+----------------+----------------+------------+------------+
-; Name           ; state.receving ; state.done ; state.idle ;
-+----------------+----------------+------------+------------+
-; state.idle     ; 0              ; 0          ; 0          ;
-; state.receving ; 1              ; 0          ; 1          ;
-; state.done     ; 0              ; 1          ; 1          ;
-+----------------+----------------+------------+------------+
-
-
-Encoding Type:  One-Hot
-+---------------------------------------------------------------------------+
-; State Machine - |UART|control_uart:control_uart|state                     ;
-+-----------------+-----------------+------------+------------+-------------+
-; Name            ; state.configure ; state.done ; state.idle ; state.reset ;
-+-----------------+-----------------+------------+------------+-------------+
-; state.reset     ; 0               ; 0          ; 0          ; 0           ;
-; state.idle      ; 0               ; 0          ; 1          ; 1           ;
-; state.done      ; 0               ; 1          ; 0          ; 1           ;
-; state.configure ; 1               ; 0          ; 0          ; 1           ;
-+-----------------+-----------------+------------+------------+-------------+
-
-
-Encoding Type:  One-Hot
-+---------------------------------------------------------------------------+
-; State Machine - |UART|clk_divider:clk_divider|state                       ;
-+-----------------+-----------------+------------+------------+-------------+
-; Name            ; state.configure ; state.done ; state.idle ; state.reset ;
-+-----------------+-----------------+------------+------------+-------------+
-; state.reset     ; 0               ; 0          ; 0          ; 0           ;
-; state.idle      ; 0               ; 0          ; 1          ; 1           ;
-; state.done      ; 0               ; 1          ; 0          ; 1           ;
-; state.configure ; 1               ; 0          ; 0          ; 1           ;
-+-----------------+-----------------+------------+------------+-------------+
-
-
-+------------------------------------------------------------------------------------------------------+
-; Registers Removed During Synthesis                                                                   ;
-+------------------------------------------------+-----------------------------------------------------+
-; Register name                                  ; Reason for Removal                                  ;
-+------------------------------------------------+-----------------------------------------------------+
-; uart_tx:uart_tx|dataA[0]                       ; Stuck at VCC due to stuck port data_in              ;
-; uart_tx:uart_tx|dataA[1..6]                    ; Stuck at GND due to stuck port data_in              ;
-; uart_tx:uart_tx|dataA[7]                       ; Stuck at VCC due to stuck port data_in              ;
-; clk_divider:clk_divider|speedCache[1]          ; Merged with clk_divider:clk_divider|speedCache[0]   ;
-; control_uart:control_uart|dataCache[4,5]       ; Merged with clk_divider:clk_divider|speedCache[0]   ;
-; clk_divider:clk_divider|counter_time[8]        ; Merged with clk_divider:clk_divider|counter_time[1] ;
-; clk_divider:clk_divider|counter_time[6]        ; Merged with clk_divider:clk_divider|counter_time[0] ;
-; clk_divider:clk_divider|speedCache[0]          ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|counter_time[0,1,7,10] ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|counter_time[11]       ; Stuck at VCC due to stuck port data_in              ;
-; control_uart:control_uart|state.reset          ; Lost fanout                                         ;
-; control_uart:control_uart|state.idle           ; Lost fanout                                         ;
-; control_uart:control_uart|state.done           ; Lost fanout                                         ;
-; control_uart:control_uart|state~6              ; Lost fanout                                         ;
-; control_uart:control_uart|state~7              ; Lost fanout                                         ;
-; control_uart:control_uart|state.configure      ; Lost fanout                                         ;
-; clk_divider:clk_divider|state~6                ; Lost fanout                                         ;
-; clk_divider:clk_divider|state~7                ; Lost fanout                                         ;
-; clk_divider:clk_divider|state.configure        ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|state.done             ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|counter_time[3,5,9]    ; Merged with clk_divider:clk_divider|counter_time[2] ;
-; clk_divider:clk_divider|state.reset            ; Merged with clk_divider:clk_divider|state.idle      ;
-; clk_divider:clk_divider|counter_time[4]        ; Stuck at GND due to stuck port data_in              ;
-; clk_divider:clk_divider|counter_time[2]        ; Stuck at VCC due to stuck port data_in              ;
-; Total Number of Removed Registers = 35         ;                                                     ;
-+------------------------------------------------+-----------------------------------------------------+
-
-
-+--------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Removed Registers Triggering Further Register Optimizations                                                                                            ;
-+---------------------------------------+---------------------------+------------------------------------------------------------------------------------+
-; Register name                         ; Reason for Removal        ; Registers Removed due to This Register                                             ;
-+---------------------------------------+---------------------------+------------------------------------------------------------------------------------+
-; clk_divider:clk_divider|speedCache[0] ; Stuck at GND              ; clk_divider:clk_divider|counter_time[0], clk_divider:clk_divider|counter_time[1],  ;
-;                                       ; due to stuck port data_in ; clk_divider:clk_divider|counter_time[7], clk_divider:clk_divider|counter_time[10], ;
-;                                       ;                           ; clk_divider:clk_divider|counter_time[11], clk_divider:clk_divider|counter_time[4], ;
-;                                       ;                           ; clk_divider:clk_divider|counter_time[2]                                            ;
-; control_uart:control_uart|state.idle  ; Lost Fanouts              ; control_uart:control_uart|state.configure                                          ;
-+---------------------------------------+---------------------------+------------------------------------------------------------------------------------+
-
-
-+------------------------------------------------------+
-; General Register Statistics                          ;
-+----------------------------------------------+-------+
-; Statistic                                    ; Value ;
-+----------------------------------------------+-------+
-; Total registers                              ; 37    ;
-; Number of registers using Synchronous Clear  ; 14    ;
-; Number of registers using Synchronous Load   ; 13    ;
-; Number of registers using Asynchronous Clear ; 0     ;
-; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 16    ;
-; Number of registers using Preset             ; 0     ;
-+----------------------------------------------+-------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------------------------------------+
-; Multiplexer Restructuring Statistics (Restructuring Performed)                                                                                      ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
-; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output            ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
-; 3:1                ; 4 bits    ; 8 LEs         ; 4 LEs                ; 4 LEs                  ; Yes        ; |UART|uart_rx:uart_rx|data[0]         ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |UART|uart_tx:uart_tx|counter[0]      ;
-; 5:1                ; 4 bits    ; 12 LEs        ; 4 LEs                ; 8 LEs                  ; Yes        ; |UART|uart_rx:uart_rx|counter[3]      ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |UART|control_uart:control_uart|state ;
-; 3:1                ; 2 bits    ; 4 LEs         ; 4 LEs                ; 0 LEs                  ; No         ; |UART|clk_divider:clk_divider|state   ;
-+--------------------+-----------+---------------+----------------------+------------------------+------------+---------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "uart_rx:uart_rx"                                                                     ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                             ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; ready ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+---------------------------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "control_uart:control_uart"                                                                                       ;
-+--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; Port         ; Type   ; Severity ; Details                                                                                                  ;
-+--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-; dataReady    ; Input  ; Info     ; Explicitly unconnected                                                                                   ;
-; dataIn[3..2] ; Input  ; Info     ; Stuck at VCC                                                                                             ;
-; dataIn[7..4] ; Input  ; Info     ; Stuck at GND                                                                                             ;
-; dataIn[1..0] ; Input  ; Info     ; Stuck at GND                                                                                             ;
-; dataOut      ; Output ; Warning  ; Declared by entity but not connected by instance. Logic that only feeds a dangling port will be removed. ;
-+--------------+--------+----------+----------------------------------------------------------------------------------------------------------+
-
-
-+-------------------------------+
-; Elapsed Time Per Partition    ;
-+----------------+--------------+
-; Partition Name ; Elapsed Time ;
-+----------------+--------------+
-; Top            ; 00:00:01     ;
-+----------------+--------------+
-
-
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 13.1.0 Build 162 10/23/2013 SJ Web Edition
-    Info: Processing started: Thu Jul  5 02:28:20 2018
+    Info: Processing started: Tue Jul 10 00:18:27 2018
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off testeUART -c testeUART
 Warning (20028): Parallel compilation is not licensed and has been disabled
 Info (12021): Found 1 design units, including 1 entities, in source file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/uart_tx.v
@@ -392,7 +167,6 @@ Info (12021): Found 1 design units, including 1 entities, in source file /home/g
     Info (12023): Found entity 1: uart_rx
 Info (12021): Found 1 design units, including 1 entities, in source file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/UART_Controller.v
     Info (12023): Found entity 1: UART_Controller
-Warning (10275): Verilog HDL Module Instantiation warning at UART.v(35): ignored dangling comma in List of Port Connections
 Info (12021): Found 1 design units, including 1 entities, in source file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/UART.v
     Info (12023): Found entity 1: UART
 Info (12021): Found 1 design units, including 1 entities, in source file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/LCD1602.v
@@ -401,28 +175,27 @@ Info (12021): Found 1 design units, including 1 entities, in source file /home/g
     Info (12023): Found entity 1: control_uart
 Info (12021): Found 1 design units, including 1 entities, in source file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/clk_divider.v
     Info (12023): Found entity 1: clk_divider
+Warning (10236): Verilog HDL Implicit Net warning at UART.v(39): created implicit net for "pulse_configure"
 Info (12127): Elaborating entity "UART" for the top level hierarchy
+Warning (10036): Verilog HDL or VHDL warning at UART.v(28): object "modo" assigned a value but never read
 Info (12128): Elaborating entity "clk_divider" for hierarchy "clk_divider:clk_divider"
 Info (12128): Elaborating entity "control_uart" for hierarchy "control_uart:control_uart"
-Warning (10036): Verilog HDL or VHDL warning at control_uart.v(15): object "configuration" assigned a value but never read
-Warning (10034): Output port "dataOut" at control_uart.v(13) has no driver
+Warning (10034): Output port "dataOut" at control_uart.v(22) has no driver
 Info (12128): Elaborating entity "uart_rx" for hierarchy "uart_rx:uart_rx"
 Info (12128): Elaborating entity "uart_tx" for hierarchy "uart_tx:uart_tx"
-Warning (12241): 1 hierarchies have connectivity warnings - see the Connectivity Checks report folder
-Info (286030): Timing-Driven Synthesis is running
-Info (17049): 8 registers lost all their fanouts during netlist optimizations.
+Warning (10036): Verilog HDL or VHDL warning at uart_tx.v(14): object "data_size" assigned a value but never read
+Info (12128): Elaborating entity "LCD1602" for hierarchy "LCD1602:LCD1602"
+Warning (10858): Verilog HDL warning at LCD1602.v(10): object e used but never assigned
+Warning (10230): Verilog HDL assignment warning at LCD1602.v(40): truncated value with size 32 to match size of target (16)
+Warning (10199): Verilog HDL Case Statement warning at LCD1602.v(48): case item expression never matches the case expression
+Warning (10030): Net "e" at LCD1602.v(10) has no driver or initial value, using a default initial value '0'
+Error (12006): Node instance "processor" instantiates undefined entity "processor" File: /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/modules/UART.v Line: 92
 Info (144001): Generated suppressed messages file /home/gaut/Documents/Remote Repository/MI-SD-Comunicacao-Serial-Nios/src/Teste UART/output_files/testeUART.map.smsg
-Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
-    Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 66 device resources after synthesis - the final resource count might be different
-    Info (21058): Implemented 4 input pins
-    Info (21059): Implemented 5 output pins
-    Info (21061): Implemented 57 logic cells
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 5 warnings
-    Info: Peak virtual memory: 655 megabytes
-    Info: Processing ended: Thu Jul  5 02:28:25 2018
-    Info: Elapsed time: 00:00:05
-    Info: Total CPU time (on all processors): 00:00:04
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 1 error, 9 warnings
+    Error: Peak virtual memory: 602 megabytes
+    Error: Processing ended: Tue Jul 10 00:18:29 2018
+    Error: Elapsed time: 00:00:02
+    Error: Total CPU time (on all processors): 00:00:01
 
 
 +------------------------------------------+

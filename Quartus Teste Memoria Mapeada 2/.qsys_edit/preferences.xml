@@ -15,8 +15,7 @@
   </columns>
  </clocktable>
  <window width="1100" height="764" x="0" y="14" />
- <library
-   expandedCategories="Library/Peripherals,Library,Library/Peripherals/Microcontroller Peripherals,Project" />
+ <library expandedCategories="Library,Project" />
  <generation simulation="VERILOG" />
  <hdlexample language="VERILOG" />
 </preferences>
